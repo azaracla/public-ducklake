@@ -2,6 +2,25 @@
 
 This file lists all configured datasets with their IDs, Parquet patterns, and schemas.
 
+## Recensement de la population - Fichiers détail : Individus localisés au canton-ou-ville
+
+- **Dataset ID**: `recensement-de-la-population-fichiers-detail-individus-localises-au-canton-ou-ville`
+- **Category**: `demographie`
+- **Organization**: Institut national de la statistique et des études économiques (Insee)
+- **Last Update**: 2025-02-11
+- **Source URL**: https://www.data.gouv.fr/datasets/recensement-de-la-population-fichiers-detail-individus-localises-au-canton-ou-ville/
+- **License**: notspecified
+
+### Tables
+
+- `demographie.recensement_individus_2021`
+
+### Parquet URLs
+
+- **recensement_individus_2021**: `https://static.data.gouv.fr/resources/recensement-de-la-population-fichiers-detail-individus-localises-au-canton-ou-ville-2020-1/20250211-164757/rp2021-indcvi.parquet`
+
+---
+
 ## Recensement de la population - Fichiers détail : Logements ordinaires
 
 - **Dataset ID**: `recensement-de-la-population-fichiers-detail-logements-ordinaires`
