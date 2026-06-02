@@ -1,0 +1,87 @@
+{
+  "recensement-de-la-population-fichiers-detail-logements-ordinaires": {
+    "name": "Recensement de la population - Fichiers détail : Logements ordinaires",
+    "category": "demographie",
+    "tables": [
+      "demographie.recensement_logements_2020",
+      "demographie.recensement_logements_2021"
+    ],
+    "last_update": "2025-02-12",
+    "schema_version": "v2026-06-02",
+    "parquet_urls": {
+      "recensement_logements_2020": "https://static.data.gouv.fr/resources/recensement-de-la-population-fichiers-detail-logements-ordinaires/20231023-123618/fd-logemt-2020.parquet",
+      "recensement_logements_2021": "https://static.data.gouv.fr/resources/recensement-de-la-population-fichiers-detail-logements-ordinaires/20250212-094137/fd-logemt-2021.parquet"
+    },
+    "source_url": "https://www.data.gouv.fr/datasets/recensement-de-la-population-fichiers-detail-logements-ordinaires/",
+    "organization": "Institut national de la statistique et des études économiques (Insee)",
+    "license": "notspecified"
+  },
+  "donnees-des-entreprises-utilisees-dans-lannuaire-des-entreprises": {
+    "name": "Données des entreprises utilisées dans l'Annuaire des Entreprises",
+    "category": "entreprises",
+    "tables": [
+      "entreprises.annuaire_etablissements",
+      "entreprises.annuaire_unites_legales"
+    ],
+    "last_update": "2026-06-02",
+    "schema_version": "v2026-06-02",
+    "parquet_urls": {
+      "annuaire_etablissements": "https://static.data.gouv.fr/resources/donnees-des-entreprises-utilisees-dans-lannuaire-des-entreprises/20260602-161010/etablissements-2026-06-02.parquet",
+      "annuaire_unites_legales": "https://static.data.gouv.fr/resources/donnees-des-entreprises-utilisees-dans-lannuaire-des-entreprises/20260602-160727/unites-legales-2026-06-02.parquet"
+    },
+    "source_url": "https://www.data.gouv.fr/datasets/donnees-des-entreprises-utilisees-dans-lannuaire-des-entreprises/",
+    "organization": "data.gouv.fr",
+    "license": "lov2"
+  },
+  "base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics": {
+    "name": "Base Étendue, Améliorée et Unifiée des Annonces des Marchés Publics",
+    "category": "entreprises",
+    "tables": [
+      "entreprises.beaamp_2025"
+    ],
+    "last_update": "2026-06-02",
+    "schema_version": "v2026-06-02",
+    "parquet_urls": {
+      "beaamp_2025": "https://static.data.gouv.fr/resources/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/20260102-130531/beauamp-2025-1.1.0.parquet"
+    },
+    "source_url": "https://www.data.gouv.fr/datasets/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/",
+    "organization": "data.gouv.fr",
+    "license": "cc-by-sa"
+  },
+  "donnees-financieres-detaillees-des-entreprises-format-parquet": {
+    "name": "Données financières détaillées des entreprises (format parquet)",
+    "category": "entreprises",
+    "tables": [
+      "entreprises.donnees_financieres"
+    ],
+    "last_update": "2026-02-10",
+    "schema_version": "v2026-06-02",
+    "parquet_urls": {
+      "donnees_financieres": "https://static.data.gouv.fr/resources/donnees-financieres-detaillees-des-entreprises-format-parquet/20260210-082327/export-detail-bilan.parquet"
+    },
+    "source_url": "https://www.data.gouv.fr/datasets/donnees-financieres-detaillees-des-entreprises-format-parquet/",
+    "organization": "Signaux Faibles",
+    "license": "lov2"
+  },
+  "base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret": {
+    "name": "Base Sirene des entreprises et de leurs établissements (SIREN, SIRET)",
+    "category": "entreprises",
+    "tables": [
+      "entreprises.sirene_etablissements",
+      "entreprises.sirene_etablissements_historique",
+      "entreprises.sirene_unites_legales",
+      "entreprises.sirene_unites_legales_historique"
+    ],
+    "last_update": "2026-06-01",
+    "schema_version": "v2026-06-02",
+    "parquet_urls": {
+      "sirene_etablissements": "https://static.data.gouv.fr/resources/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/20260601-092940/stock-stocketablissement-parquet.parquet",
+      "sirene_etablissements_historique": "https://static.data.gouv.fr/resources/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/20260601-092749/stock-stocketablissementhistorique-parquet.parquet",
+      "sirene_unites_legales": "https://static.data.gouv.fr/resources/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/20260601-092310/stock-stockunitelegale-parquet.parquet",
+      "sirene_unites_legales_historique": "https://static.data.gouv.fr/resources/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/20260601-092423/stock-stockunitelegalehistorique-parquet.parquet"
+    },
+    "source_url": "https://www.data.gouv.fr/datasets/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/",
+    "organization": "Institut national de la statistique et des études économiques (Insee)",
+    "license": "lov2"
+  }
+}
