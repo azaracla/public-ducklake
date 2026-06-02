@@ -128,3 +128,22 @@ This file lists all configured datasets with their IDs, Parquet patterns, and sc
 
 ---
 
+## Indicateurs de valeur ajoutée des lycées d'enseignement général et technologique
+
+- **Dataset ID**: `indicateurs-de-valeur-ajoutee-des-lycees-denseignement-general-et-technologique-2`
+- **Category**: `education`
+- **Organization**: Ministères de l'Éducation nationale
+- **Last Update**: 2026-04-03
+- **Source URL**: https://www.data.gouv.fr/datasets/indicateurs-de-valeur-ajoutee-des-lycees-denseignement-general-et-technologique-2/
+- **License**: lov2
+
+### Tables
+
+- `education.indicateur_valeur_ajoutee_lycees_gt`
+
+### Parquet URLs
+
+- **indicateur_valeur_ajoutee_lycees_gt**: `https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/fr-en-indicateurs-de-resultat-des-lycees-gt_v2/exports/parquet`
+
+---
+

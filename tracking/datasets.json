@@ -100,5 +100,20 @@
     "source_url": "https://www.data.gouv.fr/datasets/recensement-de-la-population-fichiers-detail-individus-localises-au-canton-ou-ville/",
     "organization": "Institut national de la statistique et des études économiques (Insee)",
     "license": "notspecified"
+  },
+  "indicateurs-de-valeur-ajoutee-des-lycees-denseignement-general-et-technologique-2": {
+    "name": "Indicateurs de valeur ajoutée des lycées d'enseignement général et technologique",
+    "category": "education",
+    "tables": [
+      "education.indicateur_valeur_ajoutee_lycees_gt"
+    ],
+    "last_update": "2026-04-03",
+    "schema_version": "v2026-06-02",
+    "parquet_urls": {
+      "indicateur_valeur_ajoutee_lycees_gt": "https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/fr-en-indicateurs-de-resultat-des-lycees-gt_v2/exports/parquet"
+    },
+    "source_url": "https://www.data.gouv.fr/datasets/indicateurs-de-valeur-ajoutee-des-lycees-denseignement-general-et-technologique-2/",
+    "organization": "Ministères de l'Éducation nationale",
+    "license": "lov2"
   }
 }
