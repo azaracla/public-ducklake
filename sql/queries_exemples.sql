@@ -1,5 +1,91 @@
 -- SECTION 9: RÉSULTATS DES TESTS
 -- ============================================================
+=======
+-- ============================================================
+-- SECTION 9: CROISEMENTS INTER-CATÉGORIES (ADAPTÉS)
+-- ============================================================
+
+-- 9.1: Entreprises × Démographie (par département)
+-- ratio: entreprises par individu dans chaque département
+-- Clé de jointure: RIGHT(nicSiegeUniteLegale, 2) = DEPT
+WITH
+  dept_entreprises AS (
+    SELECT RIGHT(nicSiegeUniteLegale, 2) AS dept,
+           COUNT(DISTINCT siren) AS nb_entreprises
+    FROM entreprises.sirene_unites_legales
+    WHERE nicSiegeUniteLegale IS NOT NULL
+    GROUP BY dept
+  ),
+  dept_pop AS (
+    SELECT DEPT, COUNT(DISTINCT NUMMI) AS nb_individus
+    FROM demographie.recensement_individus_2021
+    GROUP BY DEPT
+  )
+SELECT
+  d.dept AS DEPT,
+  d.nb_entreprises,
+  p.nb_individus,
+  ROUND(d.nb_entreprises * 100.0 / NULLIF(p.nb_individus, 0), 2) AS ratio_entreprises_par_individu
+FROM dept_entreprises d
+JOIN dept_pop p ON d.dept = p.DEPT
+ORDER BY ratio_entreprises_par_individu DESC
+LIMIT 10;
+
+-- 9.2: Écoles × Démographie (IPS moyen par département)
+-- Corrélation entre l'Indice de Position Sociale des écoles et la population
+WITH
+  dept_ips AS (
+    SELECT code_du_departement AS dept_code, departement,
+           AVG(CASE WHEN ips ~ '^[0-9]+(\.[0-9]+)?$' THEN CAST(ips AS DOUBLE) ELSE NULL END) AS avg_ips,
+           COUNT(DISTINCT nom_de_l_etablissement) AS nb_ecoles
+    FROM education.ips_ecoles
+    WHERE ips IS NOT NULL AND ips != ''
+    GROUP BY code_du_departement, departement
+  ),
+  dept_pop AS (
+    SELECT DEPT, COUNT(DISTINCT NUMMI) AS population
+    FROM demographie.recensement_individus_2021
+    GROUP BY DEPT
+  )
+SELECT i.departement, i.avg_ips, p.population, i.nb_ecoles
+FROM dept_ips i
+JOIN dept_pop p ON i.dept_code = p.DEPT
+ORDER BY i.avg_ips DESC
+LIMIT 10;
+
+-- 9.3: Entreprises × Écoles (secteur dominant + IPS par département)
+-- Analyse du lien entre activité économique et indice social des écoles
+WITH
+  dept_entreprises AS (
+    SELECT RIGHT(nicSiegeUniteLegale, 2) AS dept_code,
+           activitePrincipaleUniteLegale,
+           COUNT(DISTINCT siren) AS nb_entreprises
+    FROM entreprises.sirene_unites_legales
+    WHERE nicSiegeUniteLegale IS NOT NULL AND activitePrincipaleUniteLegale IS NOT NULL
+    GROUP BY dept_code, activitePrincipaleUniteLegale
+  ),
+  dept_ips AS (
+    SELECT code_du_departement AS dept_code,
+           AVG(CASE WHEN ips ~ '^[0-9]+(\.[0-9]+)?$' THEN CAST(ips AS DOUBLE) ELSE NULL END) AS avg_ips
+    FROM education.ips_ecoles
+    WHERE ips IS NOT NULL AND ips != ''
+    GROUP BY code_du_departement
+  )
+SELECT 
+    e.activitePrincipaleUniteLegale as code_naf,
+    e.dept_code,
+    e.nb_entreprises,
+    i.avg_ips
+FROM dept_entreprises e
+JOIN dept_ips i ON e.dept_code = i.dept_code
+WHERE e.nb_entreprises > 1000
+ORDER BY e.nb_entreprises DESC
+LIMIT 10;
+
+-- ============================================================
+-- SECTION 10: RÉSULTATS DES TESTS
+-- ============================================================SECTION 9: RÉSULTATS DES TESTS
+-- ============================================================
 
 -- Les requêtes suivantes ont été testées et validées le 2026-06-02:
 -- 
