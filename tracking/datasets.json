@@ -115,5 +115,35 @@
     "source_url": "https://www.data.gouv.fr/datasets/indicateurs-de-valeur-ajoutee-des-lycees-denseignement-general-et-technologique-2/",
     "organization": "Ministères de l'Éducation nationale",
     "license": "lov2"
+  },
+  "indice-deloignement-des-lycees": {
+    "name": "Indice d'éloignement des lycées",
+    "category": "education",
+    "tables": [
+      "education.indice_eloignement_lycees"
+    ],
+    "last_update": "2026-05-13",
+    "schema_version": "v2026-06-02",
+    "parquet_urls": {
+      "indice_eloignement_lycees": "https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/fr-en-indice_eloignement_lycee_ap2020/exports/parquet"
+    },
+    "source_url": "https://www.data.gouv.fr/datasets/indice-deloignement-des-lycees/",
+    "organization": "Ministères de l'Éducation nationale",
+    "license": "notspecified"
+  },
+  "indices-de-position-sociale-dans-les-ecoles-a-partir-de-2022": {
+    "name": "Indices de position sociale des écoles (à partir de 2022)",
+    "category": "education",
+    "tables": [
+      "education.ips_ecoles"
+    ],
+    "last_update": "2026-02-06",
+    "schema_version": "v2026-06-02",
+    "parquet_urls": {
+      "ips_ecoles": "https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/fr-en-ips-ecoles-ap2022/exports/parquet"
+    },
+    "source_url": "https://www.data.gouv.fr/datasets/indices-de-position-sociale-dans-les-ecoles-a-partir-de-2022/",
+    "organization": "Ministères de l'Éducation nationale",
+    "license": "lov2"
   }
 }

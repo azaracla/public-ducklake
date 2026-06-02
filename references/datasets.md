@@ -147,3 +147,41 @@ This file lists all configured datasets with their IDs, Parquet patterns, and sc
 
 ---
 
+## Indice d'éloignement des lycées
+
+- **Dataset ID**: `indice-deloignement-des-lycees`
+- **Category**: `education`
+- **Organization**: Ministères de l'Éducation nationale
+- **Last Update**: 2026-05-13
+- **Source URL**: https://www.data.gouv.fr/datasets/indice-deloignement-des-lycees/
+- **License**: notspecified
+
+### Tables
+
+- `education.indice_eloignement_lycees`
+
+### Parquet URLs
+
+- **indice_eloignement_lycees**: `https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/fr-en-indice_eloignement_lycee_ap2020/exports/parquet`
+
+---
+
+## Indices de position sociale des écoles (à partir de 2022)
+
+- **Dataset ID**: `indices-de-position-sociale-dans-les-ecoles-a-partir-de-2022`
+- **Category**: `education`
+- **Organization**: Ministères de l'Éducation nationale
+- **Last Update**: 2026-02-06
+- **Source URL**: https://www.data.gouv.fr/datasets/indices-de-position-sociale-dans-les-ecoles-a-partir-de-2022/
+- **License**: lov2
+
+### Tables
+
+- `education.ips_ecoles`
+
+### Parquet URLs
+
+- **ips_ecoles**: `https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/fr-en-ips-ecoles-ap2022/exports/parquet`
+
+---
+
