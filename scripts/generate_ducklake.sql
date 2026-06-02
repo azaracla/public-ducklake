@@ -14,6 +14,7 @@ USE dg;
 CREATE SCHEMA IF NOT EXISTS demographie;
 CREATE SCHEMA IF NOT EXISTS entreprises;
 
+.include schemas/v2026-06-02/demographie/demographie_recensement_individus_2020.sql
 .include schemas/v2026-06-02/demographie/demographie_recensement_individus_2021.sql
 .include schemas/v2026-06-02/demographie/demographie_recensement_logements_2020.sql
 .include schemas/v2026-06-02/demographie/demographie_recensement_logements_2021.sql

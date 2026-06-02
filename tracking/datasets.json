@@ -88,11 +88,13 @@
     "name": "Recensement de la population - Fichiers détail : Individus localisés au canton-ou-ville",
     "category": "demographie",
     "tables": [
+      "demographie.recensement_individus_2020",
       "demographie.recensement_individus_2021"
     ],
-    "last_update": "2025-02-11",
+    "last_update": "2025-02-12",
     "schema_version": "v2026-06-02",
     "parquet_urls": {
+      "recensement_individus_2020": "https://static.data.gouv.fr/resources/recensement-de-la-population-fichiers-detail-individus-localises-au-canton-ou-ville-2020-1/20231023-122841/fd-indcvi-2020.parquet",
       "recensement_individus_2021": "https://static.data.gouv.fr/resources/recensement-de-la-population-fichiers-detail-individus-localises-au-canton-ou-ville-2020-1/20250211-164757/rp2021-indcvi.parquet"
     },
     "source_url": "https://www.data.gouv.fr/datasets/recensement-de-la-population-fichiers-detail-individus-localises-au-canton-ou-ville/",
