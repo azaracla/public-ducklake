@@ -78,7 +78,7 @@ This file lists all configured datasets with their IDs, Parquet patterns, and sc
 
 ### Parquet URLs
 
-- **beaamp_2025**: `https://static.data.gouv.fr/resources/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/20260102-130531/beauamp-2025-1.1.0.parquet`
+- **beaamp_2025**: `https://static.data.gouv.fr/resources/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/20260602-185506/beauamp-mai-2026-1.1.0.parquet`
 
 ---
 

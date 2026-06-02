@@ -42,7 +42,7 @@
     "last_update": "2026-06-02",
     "schema_version": "v2026-06-02",
     "parquet_urls": {
-      "beaamp_2025": "https://static.data.gouv.fr/resources/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/20260102-130531/beauamp-2025-1.1.0.parquet"
+      "beaamp_2025": "https://static.data.gouv.fr/resources/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/20260602-185506/beauamp-mai-2026-1.1.0.parquet"
     },
     "source_url": "https://www.data.gouv.fr/datasets/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/",
     "organization": "data.gouv.fr",

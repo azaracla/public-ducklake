@@ -1,6 +1,6 @@
 -- Schema: entreprises
 -- Table: beaamp_2025
--- Source: https://static.data.gouv.fr/resources/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/20260102-130531/beauamp-2025-1.1.0.parquet
+-- Source: https://static.data.gouv.fr/resources/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/20260602-185506/beauamp-mai-2026-1.1.0.parquet
 -- Last updated: 2026-06-02
 
 CREATE SCHEMA IF NOT EXISTS entreprises;
@@ -95,8 +95,8 @@ CREATE TABLE entreprises.beaamp_2025 (
   __index_level_0__ BIGINT NULL
 );
 
-COMMENT ON TABLE entreprises.beaamp_2025 IS 'Base Étendue et Améliorée des Annonces de Marchés Publics 2025';
+COMMENT ON TABLE entreprises.beaamp_2025 IS 'Base Étendue, Améliorée et Unifiée des Annonces des Marchés Publics - Mise à jour mai 2026';
 
 CALL ducklake_add_data_files('dg', 'beaamp_2025',
-    'https://static.data.gouv.fr/resources/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/20260102-130531/beauamp-2025-1.1.0.parquet',
+    'https://static.data.gouv.fr/resources/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/20260602-185506/beauamp-mai-2026-1.1.0.parquet',
     schema => 'entreprises');
