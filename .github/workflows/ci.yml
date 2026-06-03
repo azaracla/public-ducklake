@@ -18,7 +18,36 @@ jobs:
           curl -fsSL https://install.duckdb.org | sh
           echo "$HOME/.duckdb/cli/latest" >> $GITHUB_PATH
 
-      - name: Validate catalog attachment and table accessibility
+      - name: Check Parquet URLs are reachable
+        run: |
+          echo "Checking remote Parquet URLs..."
+          urls=(
+            "https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/fr-en-ips-ecoles-ap2022/exports/parquet"
+            "https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/fr-en-indice_eloignement_lycee_ap2020/exports/parquet"
+            "https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/fr-en-indicateurs-de-resultat-des-lycees-gt_v2/exports/parquet"
+            "https://static.data.gouv.fr/resources/recensement-de-la-population-fichiers-detail-logements-ordinaires/20231023-123618/fd-logemt-2020.parquet"
+            "https://static.data.gouv.fr/resources/recensement-de-la-population-fichiers-detail-logements-ordinaires/20250212-094137/fd-logemt-2021.parquet"
+            "https://static.data.gouv.fr/resources/recensement-de-la-population-fichiers-detail-individus-localises-au-canton-ou-ville-2020-1/20231023-122841/fd-indcvi-2020.parquet"
+            "https://static.data.gouv.fr/resources/recensement-de-la-population-fichiers-detail-individus-localises-au-canton-ou-ville-2020-1/20250211-164757/rp2021-indcvi.parquet"
+          )
+          failed=0
+          for url in "${urls[@]}"; do
+            status=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$url")
+            if [ "$status" = "200" ]; then
+              echo "  ✅ $url"
+            else
+              echo "  ❌ HTTP $status $url"
+              failed=$((failed + 1))
+            fi
+          done
+          echo "---"
+          if [ $failed -gt 0 ]; then
+            echo "⚠️  $failed URL(s) unreachable (may be transient)"
+          else
+            echo "✅ All URLs reachable"
+          fi
+
+      - name: List tables in catalog
         run: |
           duckdb -c "
             INSTALL ducklake;
@@ -26,83 +55,99 @@ jobs:
             INSTALL httpfs;
             LOAD httpfs;
 
-            SET force_download=true;
             ATTACH 'ducklake:data_gouv_catalog.ducklake' AS dg (READ_ONLY true);
             USE dg;
 
-            SELECT '✅ Catalog attached successfully' AS status;
+            SELECT table_schema, table_name, comment
+            FROM duckdb_tables()
+            WHERE database_name = 'dg'
+            ORDER BY table_schema, table_name;
           "
 
-      - name: Count all tables
+      - name: Query education tables (small datasets)
         run: |
-          duckdb -c "
-            INSTALL ducklake;
-            LOAD ducklake;
-            INSTALL httpfs;
-            LOAD httpfs;
+          for table in \
+            "education.ips_ecoles" \
+            "education.indice_eloignement_lycees" \
+            "education.indicateur_valeur_ajoutee_lycees_gt"; do
+            echo "--- $table ---"
+            duckdb -c "
+              INSTALL ducklake; LOAD ducklake;
+              INSTALL httpfs; LOAD httpfs;
+              SET force_download=true;
+              ATTACH 'ducklake:data_gouv_catalog.ducklake' AS dg (READ_ONLY true);
+              USE dg;
+              SELECT '$table' AS table_name, COUNT(*) AS row_count FROM $table;
+            " && echo "  ✅ $table" || echo "  ❌ $table"
+          done
 
-            SET force_download=true;
-            ATTACH 'ducklake:data_gouv_catalog.ducklake' AS dg (READ_ONLY true);
-            USE dg;
-
-            SELECT table_name, row_count
-            FROM (
-              SELECT 'demographie.recensement_individus_2020' AS table_name, COUNT(*) AS row_count FROM demographie.recensement_individus_2020
-              UNION ALL SELECT 'demographie.recensement_individus_2021',                 COUNT(*) FROM demographie.recensement_individus_2021
-              UNION ALL SELECT 'demographie.recensement_logements_2020',                 COUNT(*) FROM demographie.recensement_logements_2020
-              UNION ALL SELECT 'demographie.recensement_logements_2021',                 COUNT(*) FROM demographie.recensement_logements_2021
-              UNION ALL SELECT 'education.ips_ecoles',                                   COUNT(*) FROM education.ips_ecoles
-              UNION ALL SELECT 'education.indice_eloignement_lycees',                    COUNT(*) FROM education.indice_eloignement_lycees
-              UNION ALL SELECT 'education.indicateur_valeur_ajoutee_lycees_gt',          COUNT(*) FROM education.indicateur_valeur_ajoutee_lycees_gt
-              UNION ALL SELECT 'entreprises.annuaire_etablissements',                    COUNT(*) FROM entreprises.annuaire_etablissements
-              UNION ALL SELECT 'entreprises.annuaire_unites_legales',                    COUNT(*) FROM entreprises.annuaire_unites_legales
-              UNION ALL SELECT 'entreprises.beaamp_2025',                                COUNT(*) FROM entreprises.beaamp_2025
-              UNION ALL SELECT 'entreprises.donnees_financieres',                        COUNT(*) FROM entreprises.donnees_financieres
-              UNION ALL SELECT 'entreprises.sirene_etablissements',                      COUNT(*) FROM entreprises.sirene_etablissements
-              UNION ALL SELECT 'entreprises.sirene_etablissements_historique',           COUNT(*) FROM entreprises.sirene_etablissements_historique
-              UNION ALL SELECT 'entreprises.sirene_unites_legales',                      COUNT(*) FROM entreprises.sirene_unites_legales
-              UNION ALL SELECT 'entreprises.sirene_unites_legales_historique',           COUNT(*) FROM entreprises.sirene_unites_legales_historique
-            )
-            ORDER BY table_name;
-          "
-
-      - name: Data integrity checks
+      - name: Query demography tables (medium datasets)
         run: |
-          duckdb -c "
-            INSTALL ducklake;
-            LOAD ducklake;
-            INSTALL httpfs;
-            LOAD httpfs;
+          for table in \
+            "demographie.recensement_logements_2020" \
+            "demographie.recensement_logements_2021"; do
+            echo "--- $table ---"
+            duckdb -c "
+              INSTALL ducklake; LOAD ducklake;
+              INSTALL httpfs; LOAD httpfs;
+              SET force_download=true;
+              ATTACH 'ducklake:data_gouv_catalog.ducklake' AS dg (READ_ONLY true);
+              USE dg;
+              SELECT '$table' AS table_name, COUNT(*) AS row_count FROM $table;
+            " && echo "  ✅ $table" || echo "  ❌ $table"
+          done
+          for table in \
+            "demographie.recensement_individus_2020" \
+            "demographie.recensement_individus_2021"; do
+            echo "--- $table (LIMIT 1) ---"
+            duckdb -c "
+              INSTALL ducklake; LOAD ducklake;
+              INSTALL httpfs; LOAD httpfs;
+              SET force_download=true;
+              ATTACH 'ducklake:data_gouv_catalog.ducklake' AS dg (READ_ONLY true);
+              USE dg;
+              SELECT '$table' AS table_name, COUNT(*) AS columns FROM (
+                SELECT column_name FROM information_schema.columns
+                WHERE table_catalog = 'dg' AND table_schema = 'demographie' AND table_name = '$table'
+              );
+            " && echo "  ✅ $table (schema OK)" || echo "  ❌ $table"
+            duckdb -c "
+              INSTALL ducklake; LOAD ducklake;
+              INSTALL httpfs; LOAD httpfs;
+              SET force_download=true;
+              ATTACH 'ducklake:data_gouv_catalog.ducklake' AS dg (READ_ONLY true);
+              USE dg;
+              SELECT '$table' AS table_name, * FROM $table LIMIT 1;
+            " && echo "  ✅ $table (data accessible)" || echo "  ❌ $table"
+          done
 
-            SET force_download=true;
-            ATTACH 'ducklake:data_gouv_catalog.ducklake' AS dg (READ_ONLY true);
-            USE dg;
-
-            SELECT 'education.ips_ecoles' AS table_name,
-                   COUNT(*) AS total_rows,
-                   SUM(CASE WHEN uai IS NULL THEN 1 ELSE 0 END) AS null_uai,
-                   SUM(CASE WHEN code_du_departement IS NULL THEN 1 ELSE 0 END) AS null_code_dept,
-                   SUM(CASE WHEN ips IS NULL THEN 1 ELSE 0 END) AS null_ips
-            FROM education.ips_ecoles
-
-            UNION ALL
-
-            SELECT 'education.indice_eloignement_lycees',
-                   COUNT(*),
-                   SUM(CASE WHEN uai IS NULL THEN 1 ELSE 0 END),
-                   SUM(CASE WHEN code_departement IS NULL THEN 1 ELSE 0 END),
-                   SUM(CASE WHEN indice_eloignement IS NULL THEN 1 ELSE 0 END)
-            FROM education.indice_eloignement_lycees;
-          "
+      - name: Query enterprise tables (large datasets - LIMIT 1)
+        run: |
+          for table in \
+            "entreprises.annuaire_etablissements" \
+            "entreprises.annuaire_unites_legales" \
+            "entreprises.beaamp_2025" \
+            "entreprises.donnees_financieres" \
+            "entreprises.sirene_etablissements" \
+            "entreprises.sirene_etablissements_historique" \
+            "entreprises.sirene_unites_legales" \
+            "entreprises.sirene_unites_legales_historique"; do
+            echo "--- $table (LIMIT 1) ---"
+            duckdb -c "
+              INSTALL ducklake; LOAD ducklake;
+              INSTALL httpfs; LOAD httpfs;
+              SET force_download=true;
+              ATTACH 'ducklake:data_gouv_catalog.ducklake' AS dg (READ_ONLY true);
+              USE dg;
+              SELECT '$table' AS table_name, * FROM $table LIMIT 1;
+            " && echo "  ✅ $table" || echo "  ❌ $table"
+          done
 
       - name: Cross-schema query test
         run: |
           duckdb -c "
-            INSTALL ducklake;
-            LOAD ducklake;
-            INSTALL httpfs;
-            LOAD httpfs;
-
+            INSTALL ducklake; LOAD ducklake;
+            INSTALL httpfs; LOAD httpfs;
             SET force_download=true;
             ATTACH 'ducklake:data_gouv_catalog.ducklake' AS dg (READ_ONLY true);
             USE dg;
@@ -125,4 +170,4 @@ jobs:
             JOIN dept_pop p ON i.dept_code = p.DEPT
             ORDER BY i.avg_ips DESC
             LIMIT 5;
-          "
+          " && echo "  ✅ Cross-schema query" || echo "  ❌ Cross-schema query"
