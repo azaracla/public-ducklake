@@ -3,6 +3,8 @@
 -- Dataset: Demandes de valeurs foncières géolocalisées
 -- Source: https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres-geolocalisees/20260603-164236/geo-dvf-2021-2025.parquet
 -- Last updated: 2026-06-03
+-- Note: La colonne 'geom' (GEOMETRY) est ignorée car le fichier utilise GeoParquet v1 non supporté par DuckLake
+--       Utilisez longitude/latitude pour les analyses spatiales
 
 CREATE SCHEMA IF NOT EXISTS foncier;
 
@@ -46,8 +48,7 @@ CREATE TABLE foncier.dvf (
   nature_culture_speciale VARCHAR NULL,
   surface_terrain BIGINT NULL,
   longitude DOUBLE NULL,
-  latitude DOUBLE NULL,
-  geom BLOB NULL
+  latitude DOUBLE NULL
 );
 
 COMMENT ON TABLE foncier.dvf IS 'Demandes de valeurs foncières géolocalisées - Transactions immobilières 2021-2025 (DGFiP) - Normalisé et enrichi avec COG 2020 et PCI 2020';
@@ -93,8 +94,8 @@ COMMENT ON COLUMN foncier.dvf.nature_culture_speciale IS 'Nature de culture spé
 COMMENT ON COLUMN foncier.dvf.surface_terrain IS 'Surface du terrain (en m²)';
 COMMENT ON COLUMN foncier.dvf.longitude IS 'Longitude (WGS84)';
 COMMENT ON COLUMN foncier.dvf.latitude IS 'Latitude (WGS84)';
-COMMENT ON COLUMN foncier.dvf.geom IS 'Géométrie de la parcelle (format binaire)';
 
 CALL ducklake_add_data_files('dg', 'dvf',
     'https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres-geolocalisees/20260603-164236/geo-dvf-2021-2025.parquet',
-    schema => 'foncier');
+    schema => 'foncier',
+    ignore_extra_columns => true);
