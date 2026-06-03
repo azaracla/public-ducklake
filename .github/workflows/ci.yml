@@ -1,0 +1,124 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate-catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install DuckDB
+        run: |
+          curl -fsSL https://install.duckdb.org | sh
+          echo "$HOME/.duckdb/cli" >> $GITHUB_PATH
+
+      - name: Validate catalog attachment and table accessibility
+        run: |
+          duckdb -c "
+            INSTALL ducklake;
+            LOAD ducklake;
+            INSTALL httpfs;
+            LOAD httpfs;
+
+            ATTACH 'ducklake:data_gouv_catalog.ducklake' AS dg (READ_ONLY true);
+            USE dg;
+
+            SELECT '✅ Catalog attached successfully' AS status;
+          "
+
+      - name: Count all tables
+        run: |
+          duckdb -c "
+            INSTALL ducklake;
+            LOAD ducklake;
+            INSTALL httpfs;
+            LOAD httpfs;
+
+            ATTACH 'ducklake:data_gouv_catalog.ducklake' AS dg (READ_ONLY true);
+            USE dg;
+
+            SELECT table_name, row_count
+            FROM (
+              SELECT 'demographie.recensement_individus_2020' AS table_name, COUNT(*) AS row_count FROM demographie.recensement_individus_2020
+              UNION ALL SELECT 'demographie.recensement_individus_2021',                 COUNT(*) FROM demographie.recensement_individus_2021
+              UNION ALL SELECT 'demographie.recensement_logements_2020',                 COUNT(*) FROM demographie.recensement_logements_2020
+              UNION ALL SELECT 'demographie.recensement_logements_2021',                 COUNT(*) FROM demographie.recensement_logements_2021
+              UNION ALL SELECT 'education.ips_ecoles',                                   COUNT(*) FROM education.ips_ecoles
+              UNION ALL SELECT 'education.indice_eloignement_lycees',                    COUNT(*) FROM education.indice_eloignement_lycees
+              UNION ALL SELECT 'education.indicateur_valeur_ajoutee_lycees_gt',          COUNT(*) FROM education.indicateur_valeur_ajoutee_lycees_gt
+              UNION ALL SELECT 'entreprises.annuaire_etablissements',                    COUNT(*) FROM entreprises.annuaire_etablissements
+              UNION ALL SELECT 'entreprises.annuaire_unites_legales',                    COUNT(*) FROM entreprises.annuaire_unites_legales
+              UNION ALL SELECT 'entreprises.beaamp_2025',                                COUNT(*) FROM entreprises.beaamp_2025
+              UNION ALL SELECT 'entreprises.donnees_financieres',                        COUNT(*) FROM entreprises.donnees_financieres
+              UNION ALL SELECT 'entreprises.sirene_etablissements',                      COUNT(*) FROM entreprises.sirene_etablissements
+              UNION ALL SELECT 'entreprises.sirene_etablissements_historique',           COUNT(*) FROM entreprises.sirene_etablissements_historique
+              UNION ALL SELECT 'entreprises.sirene_unites_legales',                      COUNT(*) FROM entreprises.sirene_unites_legales
+              UNION ALL SELECT 'entreprises.sirene_unites_legales_historique',           COUNT(*) FROM entreprises.sirene_unites_legales_historique
+            )
+            ORDER BY table_name;
+          "
+
+      - name: Data integrity checks
+        run: |
+          duckdb -c "
+            INSTALL ducklake;
+            LOAD ducklake;
+            INSTALL httpfs;
+            LOAD httpfs;
+
+            ATTACH 'ducklake:data_gouv_catalog.ducklake' AS dg (READ_ONLY true);
+            USE dg;
+
+            SELECT 'education.ips_ecoles' AS table_name,
+                   COUNT(*) AS total_rows,
+                   SUM(CASE WHEN uai IS NULL THEN 1 ELSE 0 END) AS null_uai,
+                   SUM(CASE WHEN code_du_departement IS NULL THEN 1 ELSE 0 END) AS null_code_dept,
+                   SUM(CASE WHEN ips IS NULL THEN 1 ELSE 0 END) AS null_ips
+            FROM education.ips_ecoles
+
+            UNION ALL
+
+            SELECT 'education.indice_eloignement_lycees',
+                   COUNT(*),
+                   SUM(CASE WHEN uai IS NULL THEN 1 ELSE 0 END),
+                   SUM(CASE WHEN code_departement IS NULL THEN 1 ELSE 0 END),
+                   SUM(CASE WHEN indice_eloignement IS NULL THEN 1 ELSE 0 END)
+            FROM education.indice_eloignement_lycees;
+          "
+
+      - name: Cross-schema query test
+        run: |
+          duckdb -c "
+            INSTALL ducklake;
+            LOAD ducklake;
+            INSTALL httpfs;
+            LOAD httpfs;
+
+            ATTACH 'ducklake:data_gouv_catalog.ducklake' AS dg (READ_ONLY true);
+            USE dg;
+
+            WITH dept_ips AS (
+              SELECT code_du_departement AS dept_code,
+                     AVG(CASE WHEN ips ~ '^[0-9]+(\.[0-9]+)?\$' THEN CAST(ips AS DOUBLE) ELSE NULL END) AS avg_ips,
+                     COUNT(DISTINCT uai) AS nb_ecoles
+              FROM education.ips_ecoles
+              WHERE ips IS NOT NULL AND ips != ''
+              GROUP BY code_du_departement
+            ),
+            dept_pop AS (
+              SELECT DEPT, COUNT(DISTINCT NUMMI) AS population
+              FROM demographie.recensement_individus_2021
+              GROUP BY DEPT
+            )
+            SELECT i.dept_code, i.avg_ips, p.population, i.nb_ecoles
+            FROM dept_ips i
+            JOIN dept_pop p ON i.dept_code = p.DEPT
+            ORDER BY i.avg_ips DESC
+            LIMIT 5;
+          "
