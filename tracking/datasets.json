@@ -7,7 +7,7 @@
       "demographie.recensement_logements_2021"
     ],
     "last_update": "2025-02-12",
-    "schema_version": "v2026-06-02",
+    "schema_version": "v2026-06-03",
     "parquet_urls": {
       "recensement_logements_2020": "https://static.data.gouv.fr/resources/recensement-de-la-population-fichiers-detail-logements-ordinaires/20231023-123618/fd-logemt-2020.parquet",
       "recensement_logements_2021": "https://static.data.gouv.fr/resources/recensement-de-la-population-fichiers-detail-logements-ordinaires/20250212-094137/fd-logemt-2021.parquet"
@@ -24,7 +24,7 @@
       "entreprises.annuaire_unites_legales"
     ],
     "last_update": "2026-06-02",
-    "schema_version": "v2026-06-02",
+    "schema_version": "v2026-06-03",
     "parquet_urls": {
       "annuaire_etablissements": "https://static.data.gouv.fr/resources/donnees-des-entreprises-utilisees-dans-lannuaire-des-entreprises/20260602-161010/etablissements-2026-06-02.parquet",
       "annuaire_unites_legales": "https://static.data.gouv.fr/resources/donnees-des-entreprises-utilisees-dans-lannuaire-des-entreprises/20260602-160727/unites-legales-2026-06-02.parquet"
@@ -40,7 +40,7 @@
       "entreprises.beaamp_2025"
     ],
     "last_update": "2026-06-02",
-    "schema_version": "v2026-06-02",
+    "schema_version": "v2026-06-03",
     "parquet_urls": {
       "beaamp_2025": "https://static.data.gouv.fr/resources/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/20260602-185506/beauamp-mai-2026-1.1.0.parquet"
     },
@@ -55,7 +55,7 @@
       "entreprises.donnees_financieres"
     ],
     "last_update": "2026-02-10",
-    "schema_version": "v2026-06-02",
+    "schema_version": "v2026-06-03",
     "parquet_urls": {
       "donnees_financieres": "https://static.data.gouv.fr/resources/donnees-financieres-detaillees-des-entreprises-format-parquet/20260210-082327/export-detail-bilan.parquet"
     },
@@ -73,7 +73,7 @@
       "entreprises.sirene_unites_legales_historique"
     ],
     "last_update": "2026-06-01",
-    "schema_version": "v2026-06-02",
+    "schema_version": "v2026-06-03",
     "parquet_urls": {
       "sirene_etablissements": "https://static.data.gouv.fr/resources/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/20260601-092940/stock-stocketablissement-parquet.parquet",
       "sirene_etablissements_historique": "https://static.data.gouv.fr/resources/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/20260601-092749/stock-stocketablissementhistorique-parquet.parquet",
@@ -92,7 +92,7 @@
       "demographie.recensement_individus_2021"
     ],
     "last_update": "2025-02-12",
-    "schema_version": "v2026-06-02",
+    "schema_version": "v2026-06-03",
     "parquet_urls": {
       "recensement_individus_2020": "https://static.data.gouv.fr/resources/recensement-de-la-population-fichiers-detail-individus-localises-au-canton-ou-ville-2020-1/20231023-122841/fd-indcvi-2020.parquet",
       "recensement_individus_2021": "https://static.data.gouv.fr/resources/recensement-de-la-population-fichiers-detail-individus-localises-au-canton-ou-ville-2020-1/20250211-164757/rp2021-indcvi.parquet"
@@ -108,7 +108,7 @@
       "education.indicateur_valeur_ajoutee_lycees_gt"
     ],
     "last_update": "2026-04-03",
-    "schema_version": "v2026-06-02",
+    "schema_version": "v2026-06-03",
     "parquet_urls": {
       "indicateur_valeur_ajoutee_lycees_gt": "https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/fr-en-indicateurs-de-resultat-des-lycees-gt_v2/exports/parquet"
     },
@@ -123,7 +123,7 @@
       "education.indice_eloignement_lycees"
     ],
     "last_update": "2026-05-13",
-    "schema_version": "v2026-06-02",
+    "schema_version": "v2026-06-03",
     "parquet_urls": {
       "indice_eloignement_lycees": "https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/fr-en-indice_eloignement_lycee_ap2020/exports/parquet"
     },
@@ -138,12 +138,27 @@
       "education.ips_ecoles"
     ],
     "last_update": "2026-02-06",
-    "schema_version": "v2026-06-02",
+    "schema_version": "v2026-06-03",
     "parquet_urls": {
       "ips_ecoles": "https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/fr-en-ips-ecoles-ap2022/exports/parquet"
     },
     "source_url": "https://www.data.gouv.fr/datasets/indices-de-position-sociale-dans-les-ecoles-a-partir-de-2022/",
     "organization": "Ministères de l'Éducation nationale",
+    "license": "lov2"
+  },
+  "demandes-de-valeurs-foncieres-geolocalisees": {
+    "name": "Demandes de valeurs foncières géolocalisées",
+    "category": "foncier",
+    "tables": [
+      "foncier.dvf"
+    ],
+    "last_update": "2026-06-03",
+    "schema_version": "v2026-06-03",
+    "parquet_urls": {
+      "dvf": "https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres-geolocalisees/20260603-164236/geo-dvf-2021-2025.parquet"
+    },
+    "source_url": "https://www.data.gouv.fr/datasets/demandes-de-valeurs-foncieres-geolocalisees/",
+    "organization": "data.gouv.fr",
     "license": "lov2"
   }
 }

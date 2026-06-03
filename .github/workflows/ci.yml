@@ -89,6 +89,20 @@ jobs:
             " && echo "  ✅ $table" || echo "  ❌ $table"
           done
 
+      - name: Query foncier tables
+        run: |
+          for table in \
+            "foncier.dvf"; do
+            echo "--- $table ---"
+            duckdb -c "
+              INSTALL ducklake; LOAD ducklake;
+              INSTALL httpfs; LOAD httpfs;
+              ATTACH 'ducklake:data_gouv_catalog.ducklake' AS dg (READ_ONLY true);
+              USE dg;
+              SELECT '$table' AS table_name, COUNT(*) AS row_count FROM $table;
+            " && echo "  ✅ $table" || echo "  ❌ $table"
+          done
+
       - name: Cross-schema query test (education x demographie)
         run: |
           duckdb -c "
@@ -116,3 +130,18 @@ jobs:
             ORDER BY i.avg_ips DESC
             LIMIT 5;
           " && echo "  ✅ Cross-schema query" || echo "  ❌ Cross-schema query"
+
+      - name: Test column comments
+        run: |
+          duckdb -c "
+            INSTALL ducklake; LOAD ducklake;
+            INSTALL httpfs; LOAD httpfs;
+            ATTACH 'ducklake:data_gouv_catalog.ducklake' AS dg (READ_ONLY true);
+            USE dg;
+
+            SELECT column_name, column_comment
+            FROM information_schema.columns
+            WHERE table_schema = 'foncier' AND table_name = 'dvf'
+            AND column_comment IS NOT NULL
+            LIMIT 3;
+          " && echo "  ✅ Column comments" || echo "  ❌ Column comments"
