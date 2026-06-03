@@ -155,7 +155,7 @@
     "last_update": "2026-06-03",
     "schema_version": "v2026-06-03",
     "parquet_urls": {
-      "dvf": "https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres-geolocalisees/20260603-164236/geo-dvf-2021-2025.parquet"
+      "dvf": "https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres-geolocalisees/20260603-214003/geo-dvf-2021-2025.parquet"
     },
     "source_url": "https://www.data.gouv.fr/datasets/demandes-de-valeurs-foncieres-geolocalisees/",
     "organization": "data.gouv.fr",

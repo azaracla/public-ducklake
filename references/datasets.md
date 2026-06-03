@@ -185,3 +185,22 @@ This file lists all configured datasets with their IDs, Parquet patterns, and sc
 
 ---
 
+## Demandes de valeurs foncières géolocalisées
+
+- **Dataset ID**: `demandes-de-valeurs-foncieres-geolocalisees`
+- **Category**: `foncier`
+- **Organization**: data.gouv.fr
+- **Last Update**: 2026-06-03
+- **Source URL**: https://www.data.gouv.fr/datasets/demandes-de-valeurs-foncieres-geolocalisees/
+- **License**: lov2
+
+### Tables
+
+- `foncier.dvf`
+
+### Parquet URLs
+
+- **dvf**: `https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres-geolocalisees/20260603-214003/geo-dvf-2021-2025.parquet` (GeoParquet v2 avec géométrie)
+
+---
+

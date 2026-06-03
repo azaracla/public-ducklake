@@ -1,10 +1,9 @@
 -- Schema: foncier
 -- Table: dvf
 -- Dataset: Demandes de valeurs foncières géolocalisées
--- Source: https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres-geolocalisees/20260603-164236/geo-dvf-2021-2025.parquet
+-- Source: https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres-geolocalisees/20260603-214003/geo-dvf-2021-2025.parquet
 -- Last updated: 2026-06-03
--- Note: La colonne 'geom' (GEOMETRY) est ignorée car le fichier utilise GeoParquet v1 non supporté par DuckLake
---       Utilisez longitude/latitude pour les analyses spatiales
+-- Note: GeoParquet v2 supporté par DuckLake - colonne geom accessible directement
 
 CREATE SCHEMA IF NOT EXISTS foncier;
 
@@ -48,10 +47,11 @@ CREATE TABLE foncier.dvf (
   nature_culture_speciale VARCHAR NULL,
   surface_terrain BIGINT NULL,
   longitude DOUBLE NULL,
-  latitude DOUBLE NULL
+  latitude DOUBLE NULL,
+  geom GEOMETRY NULL
 );
 
-COMMENT ON TABLE foncier.dvf IS 'Demandes de valeurs foncières géolocalisées - Transactions immobilières 2021-2025 (DGFiP) - Normalisé et enrichi avec COG 2020 et PCI 2020';
+COMMENT ON TABLE foncier.dvf IS 'Demandes de valeurs foncières géolocalisées - Transactions immobilières 2021-2025 (DGFiP) - Normalisé et enrichi avec COG 2020 et PCI 2020 - GeoParquet v2 avec géométries';
 
 -- Commentaires sur les colonnes
 COMMENT ON COLUMN foncier.dvf.id_mutation IS 'Identifiant unique de la mutation foncière';
@@ -96,6 +96,5 @@ COMMENT ON COLUMN foncier.dvf.longitude IS 'Longitude (WGS84)';
 COMMENT ON COLUMN foncier.dvf.latitude IS 'Latitude (WGS84)';
 
 CALL ducklake_add_data_files('dg', 'dvf',
-    'https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres-geolocalisees/20260603-164236/geo-dvf-2021-2025.parquet',
-    schema => 'foncier',
-    ignore_extra_columns => true);
+    'https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres-geolocalisees/20260603-214003/geo-dvf-2021-2025.parquet',
+    schema => 'foncier');
