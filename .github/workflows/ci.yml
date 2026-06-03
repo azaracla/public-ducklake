@@ -32,7 +32,7 @@ jobs:
             SELECT schema_name, table_name
             FROM duckdb_tables()
             WHERE database_name = 'dg'
-            ORDER BY table_schema, table_name;
+            ORDER BY schema_name, table_name;
           "
 
       - name: Query education tables
