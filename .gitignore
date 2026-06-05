@@ -1,0 +1,13 @@
+# Temp files
+.tmp/
+
+# Large Parquet files (not in catalog)
+*.parquet
+parquet/
+
+# DuckLake local metadata
+dg_lake/
+
+# Python
+__pycache__/
+.venv/
