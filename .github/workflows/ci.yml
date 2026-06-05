@@ -20,6 +20,8 @@ jobs:
 
       - name: Build catalog from scratch
         run: |
+          rm -f data_gouv_catalog.ducklake
+          rm -rf dg_lake/
           duckdb < scripts/generate_ducklake.sql
           ls -lh data_gouv_catalog.ducklake
           echo "✅ Catalog built successfully"
