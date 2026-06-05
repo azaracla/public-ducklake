@@ -21,6 +21,7 @@ ATTACH 'ducklake:https://raw.githubusercontent.com/azaracla/public-ducklake/main
 | `education` | `ips_ecoles`, `indice_eloignement_lycees`, `indicateur_valeur_ajoutee_lycees_gt` | Ministère Éducation nationale |
 | `foncier` | `dvf` (GeoParquet v2 with `geom` column) | DGFiP / data.gouv.fr |
 | `economie` | `commande_publique`, `filosofi_carroye`, `insee_olap`, `boamp_siren` | data.gouv.fr, INSEE, AuFilDuBoamp.com |
+| `alimentation` | `open_food_facts`, `open_prices` | Open Food Facts / HuggingFace |
 
 ## Architecture
 
@@ -71,10 +72,26 @@ CI (`.github/workflows/ci.yml`) runs on push/PR to `main`:
 - **Entreprise region linkage**: Sirene tables use `libelleCommune2Etablissement` (commune name), not region codes. BEAAMP uses `region_acheteur`.
 - **Foncier geometry**: `foncier.dvf` uses GeoParquet v2 with a native `geom GEOMETRY` column. Requires DuckDB `spatial` extension for spatial queries.
 - **All columns NULLable**: Schema definitions mark every column `NULL` — the remote Parquet sources have no NOT NULL constraints.
+- **Nested STRUCT/LIST types in `alimentation.open_food_facts`**: 9 columns use deeply nested STRUCT types (e.g., `product_name STRUCT(lang, text)[]`, `nutriments STRUCT(...)[]`, `images` with nested sizes). Use `unnest()` to flatten arrays, dot notation for struct fields. `alimentation.open_prices` has simpler `VARCHAR[]` list columns (`labels_tags`, `origins_tags`).
+- **HuggingFace rate limits**: HF enforces ~3000 requests per 300s window. Large Parquet files (e.g., `food.parquet` 7.5GB, many row groups) can exhaust this quota in 1-2 analytical queries because each row group read = 1 HTTP range request. Small files (e.g., `prices.parquet` 27MB) work reliably. For heavy analysis on large HF-hosted files, download once (`wget`) and query locally, or space queries ≥5 min apart.
 
 ## Reference files
 
 - `duckdb-cheatsheet.txt` — DuckDB SQL cheatsheet (syntax, functions, v1.0→v1.5 changelog, CLI tips). Reference for DuckDB/DuckLake SQL patterns.
+
+## Remote file requirements
+
+All Parquet files added to the DuckLake catalog MUST meet these criteria:
+
+- **Publicly accessible** — no authentication required. Anyone with the URL can download.
+- **Parquet format** — `ducklake_add_data_files` only accepts Parquet. JSON, CSV, TSV must be converted first.
+- **HTTP range request support** — the server MUST accept `Range` headers and return partial content (HTTP 206). Range requests are critical for:
+  - **Partition pruning** — DuckDB reads only relevant row groups, not the whole file
+  - **Column projection** — reads only columns needed for the query
+  - **Query performance** — avoids full file downloads on every query
+- **Stable URL** — URL should be persistent. `static.data.gouv.fr`, `static.openfoodfacts.org`, HuggingFace CDN (`huggingface.co/datasets/.../resolve/main/...`) all support range requests.
+
+Servers known to support range requests: `static.data.gouv.fr`, `data.education.gouv.fr`, `huggingface.co` (raw CDN), `static.openfoodfacts.org`.
 
 ## Non-Parquet data ingestion (JSON, CSV)
 

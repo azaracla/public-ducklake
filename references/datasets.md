@@ -204,3 +204,54 @@ This file lists all configured datasets with their IDs, Parquet patterns, and sc
 
 ---
 
+## Open Food Facts - Produits alimentaires : ingrédients, nutrition, labels
+
+- **Dataset ID**: `open-food-facts-produits-alimentaires-ingredients-nutrition-labels`
+- **Category**: `alimentation`
+- **Organization**: Open Food Facts
+- **Last Update**: 2026-06-05
+- **Source URL**: https://www.data.gouv.fr/datasets/open-food-facts-produits-alimentaires-ingredients-nutrition-labels/
+- **License**: odc-odbl
+
+### Tables
+
+- `alimentation.open_food_facts`
+
+### Parquet URLs
+
+- **open_food_facts**: `https://huggingface.co/datasets/openfoodfacts/product-database/resolve/main/food.parquet` (7.5 GB, 4.5M produits, export simplifié)
+
+### Notes
+
+- 111 colonnes dont 9 colonnes STRUCT imbriquées (product_name, nutriments, images, packagings, etc.)
+- Colonnes *_tags en VARCHAR[] — utiliser unnest() ou list_contains()
+- ⚠️ Rate limit HuggingFace (~3000 req/300s) — les requêtes analytiques lourdes sur ce gros fichier peuvent épuiser le quota
+- License: ODbL
+
+---
+
+## Open Prices
+
+- **Dataset ID**: `open-prices`
+- **Category**: `alimentation`
+- **Organization**: Open Food Facts
+- **Last Update**: 2026-06-04
+- **Source URL**: https://www.data.gouv.fr/datasets/open-prices/
+- **License**: odc-odbl
+
+### Tables
+
+- `alimentation.open_prices`
+
+### Parquet URLs
+
+- **open_prices**: `https://huggingface.co/datasets/openfoodfacts/open-prices/resolve/main/prices.parquet` (27 MB, 262K preuves de prix)
+
+### Notes
+
+- 52 colonnes, schéma simple (2 colonnes VARCHAR[], le reste types scalaires)
+- Prix en DECIMAL(10,3), 83 devises différentes
+- Rate limit HF acceptable pour ce petit fichier (peu de row groups)
+
+---
+

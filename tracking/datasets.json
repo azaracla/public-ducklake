@@ -223,5 +223,37 @@
     "source_url": "https://www.data.gouv.fr/datasets/jointure-boamp-siren-cote-acheteurs-2024-2025-et-2026/",
     "organization": "AuFilDuBoamp.com",
     "license": "lov2"
+  },
+  "open-food-facts-produits-alimentaires-ingredients-nutrition-labels": {
+    "name": "Open Food Facts - Produits alimentaires : ingrédients, nutrition, labels",
+    "category": "alimentation",
+    "tables": [
+      "alimentation.open_food_facts"
+    ],
+    "last_update": "2026-06-05",
+    "schema_version": "v2026-06-05",
+    "parquet_urls": {
+      "open_food_facts": "https://huggingface.co/datasets/openfoodfacts/product-database/resolve/main/food.parquet"
+    },
+    "source_url": "https://www.data.gouv.fr/datasets/open-food-facts-produits-alimentaires-ingredients-nutrition-labels/",
+    "organization": "Open Food Facts",
+    "license": "odc-odbl",
+    "notes": "Export Parquet simplifié hébergé sur HuggingFace. 4.5M produits, 7.5 GB. ⚠️ Rate limit HF (~3000 req/300s) — requêtes analytiques lourdes = risque 429."
+  },
+  "open-prices": {
+    "name": "Open Prices",
+    "category": "alimentation",
+    "tables": [
+      "alimentation.open_prices"
+    ],
+    "last_update": "2026-06-04",
+    "schema_version": "v2026-06-05",
+    "parquet_urls": {
+      "open_prices": "https://huggingface.co/datasets/openfoodfacts/open-prices/resolve/main/prices.parquet"
+    },
+    "source_url": "https://www.data.gouv.fr/datasets/open-prices/",
+    "organization": "Open Food Facts",
+    "license": "odc-odbl",
+    "notes": "Export Parquet hébergé sur HuggingFace. 262K preuves de prix, 27 MB."
   }
 }
