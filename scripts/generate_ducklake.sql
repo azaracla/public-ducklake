@@ -1,6 +1,6 @@
 -- ============================================================
 -- DuckLake Database: data_gouv_catalog
--- Auto-generated from schemas/v2026-06-03
+-- Auto-generated from schemas/v2026-06-05
 -- ============================================================
 
 INSTALL ducklake;
@@ -15,6 +15,7 @@ CREATE SCHEMA IF NOT EXISTS demographie;
 CREATE SCHEMA IF NOT EXISTS entreprises;
 CREATE SCHEMA IF NOT EXISTS education;
 CREATE SCHEMA IF NOT EXISTS foncier;
+CREATE SCHEMA IF NOT EXISTS economie;
 
 .include schemas/v2026-06-03/demographie/demographie_recensement_individus_2020.sql
 .include schemas/v2026-06-03/demographie/demographie_recensement_individus_2021.sql
@@ -32,3 +33,4 @@ CREATE SCHEMA IF NOT EXISTS foncier;
 .include schemas/v2026-06-03/entreprises/entreprises_sirene_unites_legales.sql
 .include schemas/v2026-06-03/entreprises/entreprises_sirene_unites_legales_historique.sql
 .include schemas/v2026-06-03/foncier/foncier_dvf.sql
+.include schemas/v2026-06-05/economie/economie_commande_publique.sql
