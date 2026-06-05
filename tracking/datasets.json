@@ -160,5 +160,68 @@
     "source_url": "https://www.data.gouv.fr/datasets/demandes-de-valeurs-foncieres-geolocalisees/",
     "organization": "data.gouv.fr",
     "license": "lov2"
+  },
+  "donnees-essentielles-de-la-commande-publique-fichiers-consolides": {
+    "name": "Données essentielles de la commande publique - fichiers consolidés",
+    "category": "economie",
+    "tables": [
+      "economie.commande_publique"
+    ],
+    "last_update": "2026-06-05",
+    "schema_version": "v2026-06-05",
+    "parquet_urls": {
+      "commande_publique": "https://static.data.gouv.fr/resources/donnees-essentielles-de-la-commande-publique-fichiers-consolides/20260605-091141/decp-global.parquet"
+    },
+    "source_url": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides/",
+    "organization": "État français / data.gouv.fr",
+    "license": "lov2"
+  },
+  "revenus-pauvrete-et-niveau-de-vie-donnees-carroyees-2019-et-2021-dispositif-fichier-localise-social-et-fiscal-filosofi": {
+    "name": "Revenus, pauvreté et niveau de vie - Données carroyées 2019 et 2021 (Filosofi)",
+    "category": "economie",
+    "tables": [
+      "economie.filosofi_carroye"
+    ],
+    "last_update": "2026-03-09",
+    "schema_version": "v2026-06-05",
+    "parquet_urls": {
+      "filosofi_carroye_2021": "https://static.data.gouv.fr/resources/revenus-pauvrete-et-niveau-de-vie-donnees-carroyees-dispositif-fichier-localise-social-et-fiscal-filosofi/20260309-120901/carreaux-200m-met-3035-2021.parquet",
+      "filosofi_carroye_2019": "https://static.data.gouv.fr/resources/revenus-pauvrete-et-niveau-de-vie-en-2019-donnees-carroyees-dispositif-fichier-localise-social-et-fiscal-filosofi/20241002-110718/carreaux-200m-met-3035.parquet"
+    },
+    "source_url": "https://www.data.gouv.fr/datasets/revenus-pauvrete-et-niveau-de-vie-donnees-carroyees-2019-et-2021-dispositif-fichier-localise-social-et-fiscal-filosofi/",
+    "organization": "Institut national de la statistique et des études économiques (Insee)",
+    "license": "lov2"
+  },
+  "recensement-de-la-population-communal-et-filosofi-depuis-2015-france-metropolitaine": {
+    "name": "Recensement de la population communal et Filosofi depuis 2015 - France métropolitaine",
+    "category": "economie",
+    "tables": [
+      "economie.insee_olap"
+    ],
+    "last_update": "2024-11-04",
+    "schema_version": "v2026-06-05",
+    "parquet_urls": {
+      "insee_olap": "https://static.data.gouv.fr/resources/recensement-de-la-population-communal-et-filosofi-depuis-2015-france-metropolitaine/20241104-093439/donnees-insee-olap.parquet"
+    },
+    "source_url": "https://www.data.gouv.fr/datasets/recensement-de-la-population-communal-et-filosofi-depuis-2015-france-metropolitaine/",
+    "organization": "data.gouv.fr (contributeur icem7)",
+    "license": "lov2"
+  },
+  "jointure-boamp-siren-cote-acheteurs-2024-2025-et-2026": {
+    "name": "Jointure BOAMP - SIREN / Côté acheteurs / 2024, 2025 et 2026",
+    "category": "economie",
+    "tables": [
+      "economie.boamp_siren"
+    ],
+    "last_update": "2026-06-04",
+    "schema_version": "v2026-06-05",
+    "parquet_urls": {
+      "boamp_siren_2026": "https://static.data.gouv.fr/resources/jointure-boamp-siren-cote-acheteurs-2024-2025-et-2026/20260604-062858/boamp-avec-siren-acheteurs-2026.parquet",
+      "boamp_siren_2025": "https://static.data.gouv.fr/resources/jointure-boamp-siren-cote-acheteurs-2024-2025-et-2026/20260514-070839/boamp-avec-siren-acheteurs-2025.parquet",
+      "boamp_siren_2024": "https://static.data.gouv.fr/resources/jointure-boamp-siren-cote-acheteurs-2024-2025-et-2026/20260514-070736/boamp-avec-siren-acheteurs-2024.parquet"
+    },
+    "source_url": "https://www.data.gouv.fr/datasets/jointure-boamp-siren-cote-acheteurs-2024-2025-et-2026/",
+    "organization": "AuFilDuBoamp.com",
+    "license": "lov2"
   }
 }

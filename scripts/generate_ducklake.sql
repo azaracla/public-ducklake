@@ -34,3 +34,6 @@ CREATE SCHEMA IF NOT EXISTS economie;
 .read schemas/v2026-06-03/entreprises/entreprises_sirene_unites_legales_historique.sql
 .read schemas/v2026-06-03/foncier/foncier_dvf.sql
 .read schemas/v2026-06-05/economie/economie_commande_publique.sql
+.read schemas/v2026-06-05/economie/economie_filosofi_carroye.sql
+.read schemas/v2026-06-05/economie/economie_insee_olap.sql
+.read schemas/v2026-06-05/economie/economie_boamp_siren.sql
