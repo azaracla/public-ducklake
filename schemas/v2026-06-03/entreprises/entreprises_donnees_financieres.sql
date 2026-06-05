@@ -15,9 +15,7 @@ CREATE TABLE entreprises.donnees_financieres (
 ,
   confidentiality VARCHAR NULL
 ,
-  liasse MAP(VARCHAR NULL
-,
-  INTEGER) NULL NULL
+  liasse MAP(VARCHAR, INTEGER) NULL
 );
 
 COMMENT ON TABLE entreprises.donnees_financieres IS 'Données financières détaillées des entreprises';

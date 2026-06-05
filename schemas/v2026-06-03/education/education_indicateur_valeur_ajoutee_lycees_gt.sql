@@ -12,4 +12,4 @@ CREATE TABLE education.indicateur_valeur_ajoutee_lycees_gt (
 
 CALL ducklake_add_data_files('dg', 'indicateur_valeur_ajoutee_lycees_gt',
     'https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/fr-en-indicateurs-de-resultat-des-lycees-gt_v2/exports/parquet',
-    schema => 'education');
+    schema => 'education', ignore_extra_columns => true);

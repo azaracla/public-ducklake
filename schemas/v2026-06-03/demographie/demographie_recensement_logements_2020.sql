@@ -150,5 +150,5 @@ COMMENT ON COLUMN demographie.recensement_logements_2020.VOIT IS 'Nombre de voit
 COMMENT ON COLUMN demographie.recensement_logements_2020.WC IS 'Présence de W.-C. à l''intérieur du logement (DOM)';
 
 CALL ducklake_add_data_files('dg', 'recensement_logements_2020',
-    'https://static.data.gouv.fr/resources/recensement-de-la-population-fichiers-detail-logements-ordinaires/20231023-123618/fd-logemt-2020.parquet',
-    schema => 'demographie');
+    'https://static.data.gouv.fr/resources/recensement-de-la-population-fichiers-detail-logements-ordinaires-en-2020-1/20231023-123618/fd-logemt-2020.parquet',
+    schema => 'demographie', ignore_extra_columns => true);

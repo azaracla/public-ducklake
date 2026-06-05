@@ -189,4 +189,4 @@ COMMENT ON COLUMN demographie.recensement_individus_2020.WC IS 'Présence de W.-
 
 CALL ducklake_add_data_files('dg', 'recensement_individus_2020',
     'https://static.data.gouv.fr/resources/recensement-de-la-population-fichiers-detail-individus-localises-au-canton-ou-ville-2020-1/20231023-122841/fd-indcvi-2020.parquet',
-    schema => 'demographie');
+    schema => 'demographie', ignore_extra_columns => true);

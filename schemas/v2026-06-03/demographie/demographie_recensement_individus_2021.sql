@@ -45,7 +45,7 @@ CREATE TABLE demographie.recensement_individus_2021 (
   HLML VARCHAR NULL,
   ILETUD VARCHAR NULL,
   ILT VARCHAR NULL,
-  IMMIP VARCHAR NULL,
+  IMMI VARCHAR NULL,
   INAI VARCHAR NULL,
   INATC VARCHAR NULL,
   INFAM VARCHAR NULL,
@@ -164,4 +164,4 @@ COMMENT ON COLUMN demographie.recensement_individus_2021.WC IS 'Présence de W.-
 
 CALL ducklake_add_data_files('dg', 'recensement_individus_2021',
     'https://static.data.gouv.fr/resources/recensement-de-la-population-fichiers-detail-individus-localises-au-canton-ou-ville-2020-1/20250211-164757/rp2021-indcvi.parquet',
-    schema => 'demographie');
+    schema => 'demographie', ignore_extra_columns => true);

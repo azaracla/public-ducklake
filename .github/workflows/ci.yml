@@ -8,6 +8,35 @@ on:
   workflow_dispatch:
 
 jobs:
+  build-catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install DuckDB
+        run: |
+          curl -fsSL https://install.duckdb.org | sh
+          echo "$HOME/.duckdb/cli/latest" >> $GITHUB_PATH
+
+      - name: Build catalog from scratch
+        run: |
+          duckdb < scripts/generate_ducklake.sql
+          ls -lh data_gouv_catalog.ducklake
+          echo "✅ Catalog built successfully"
+
+      - name: Verify table count
+        run: |
+          duckdb -c "
+            INSTALL ducklake; LOAD ducklake;
+            INSTALL httpfs; LOAD httpfs;
+            ATTACH 'ducklake:data_gouv_catalog.ducklake' AS dg (READ_ONLY true);
+            USE dg;
+            SELECT schema_name, table_name
+            FROM duckdb_tables()
+            WHERE database_name = 'dg'
+            ORDER BY schema_name, table_name;
+          " && echo "✅ All tables registered"
+
   validate-catalog:
     runs-on: ubuntu-latest
     steps:
@@ -89,6 +118,20 @@ jobs:
             " && echo "  ✅ $table" || echo "  ❌ $table"
           done
 
+      - name: Query economie tables
+        run: |
+          for table in \
+            "economie.commande_publique"; do
+            echo "--- $table ---"
+            duckdb -c "
+              INSTALL ducklake; LOAD ducklake;
+              INSTALL httpfs; LOAD httpfs;
+              ATTACH 'ducklake:data_gouv_catalog.ducklake' AS dg (READ_ONLY true);
+              USE dg;
+              SELECT '$table' AS table_name, COUNT(*) AS row_count FROM $table;
+            " && echo "  ✅ $table" || echo "  ❌ $table"
+          done
+
       - name: Query foncier tables
         run: |
           for table in \
@@ -130,6 +173,23 @@ jobs:
             ORDER BY i.avg_ips DESC
             LIMIT 5;
           " && echo "  ✅ Cross-schema query" || echo "  ❌ Cross-schema query"
+
+      - name: Test sirene column reads (catch Parquet corruption)
+        run: |
+          duckdb -c "
+            INSTALL ducklake; LOAD ducklake;
+            INSTALL httpfs; LOAD httpfs;
+            ATTACH 'ducklake:data_gouv_catalog.ducklake' AS dg (READ_ONLY true);
+            USE dg;
+
+            -- Catch stoi/corruption: read actual columns, not just COUNT(*)
+            SELECT siret, siren, nic, dateCreationEtablissement, codePostalEtablissement,
+                   libelleCommuneEtablissement, etatAdministratifEtablissement
+            FROM entreprises.sirene_etablissements LIMIT 1;
+
+            SELECT siret, dateDebut, etatAdministratifEtablissement
+            FROM entreprises.sirene_etablissements_historique LIMIT 1;
+          " && echo "  ✅ Sirene column reads" || echo "  ❌ Sirene column reads"
 
       - name: Test column comments
         run: |

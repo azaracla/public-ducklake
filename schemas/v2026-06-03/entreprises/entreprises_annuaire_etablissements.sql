@@ -1,7 +1,7 @@
 -- Schema: entreprises
 -- Table: annuaire_etablissements
 -- Dataset: Données des entreprises utilisées dans l'Annuaire des Entreprises
--- Source: https://static.data.gouv.fr/resources/donnees-des-entreprises-utilisees-dans-lannuaire-des-entreprises/20260602-161010/etablissements-2026-06-02.parquet
+-- Source: https://static.data.gouv.fr/resources/donnees-des-entreprises-utilisees-dans-lannuaire-des-entreprises/20260603-135630/etablissements-2026-06-03.parquet
 -- Last updated: 2026-06-03
 
 CREATE SCHEMA IF NOT EXISTS entreprises;
@@ -21,15 +21,15 @@ CREATE TABLE entreprises.annuaire_etablissements (
 ,
   statut_diffusion VARCHAR NULL
 ,
-  liste_finess_geographique LIST(VARCHAR) NULL
+  liste_finess_geographique STRING[] NULL
 ,
-  liste_id_bio LIST(VARCHAR) NULL
+  liste_id_bio STRING[] NULL
 ,
-  liste_idcc LIST(VARCHAR) NULL
+  liste_idcc STRING[] NULL
 ,
-  liste_rge LIST(VARCHAR) NULL
+  liste_rge STRING[] NULL
 ,
-  liste_uai LIST(VARCHAR) NULL
+  liste_uai STRING[] NULL
 );
 
 COMMENT ON TABLE entreprises.annuaire_etablissements IS 'Établissements des entreprises (Annuaire des Entreprises)';
@@ -47,5 +47,5 @@ COMMENT ON COLUMN entreprises.annuaire_etablissements.liste_rge IS 'Liste des id
 COMMENT ON COLUMN entreprises.annuaire_etablissements.liste_uai IS 'Liste des identifiants UAI de l''établissement (source : Ministère de l''enseignement supérieur et de la recherche)';
 
 CALL ducklake_add_data_files('dg', 'annuaire_etablissements',
-    'https://static.data.gouv.fr/resources/donnees-des-entreprises-utilisees-dans-lannuaire-des-entreprises/20260602-161010/etablissements-2026-06-02.parquet',
+    'https://static.data.gouv.fr/resources/donnees-des-entreprises-utilisees-dans-lannuaire-des-entreprises/20260603-135630/etablissements-2026-06-03.parquet',
     schema => 'entreprises');

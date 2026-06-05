@@ -12,4 +12,4 @@ CREATE TABLE education.ips_ecoles (
 
 CALL ducklake_add_data_files('dg', 'ips_ecoles',
     'https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/fr-en-ips-ecoles-ap2022/exports/parquet',
-    schema => 'education');
+    schema => 'education', ignore_extra_columns => true);
