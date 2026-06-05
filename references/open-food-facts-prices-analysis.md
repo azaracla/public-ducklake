@@ -16,8 +16,12 @@
 6. [Nutri-Score, bio, et prix](#6-nutri-score-bio-et-prix)
 7. [Évolution temporelle et inflation](#7-évolution-temporelle-et-inflation)
 8. [Saisonnalité](#8-saisonnalité)
-9. [Limites et biais](#9-limites-et-biais)
-10. [Synthèse et enseignements](#10-synthèse-et-enseignements)
+9. [Résultats contre-intuitifs](#9-résultats-contre-intuitifs)
+10. [Guide pratique : où faire ses courses](#10-guide-pratique--où-faire-ses-courses)
+11. [Limites et biais](#11-limites-et-biais)
+12. [Synthèse et enseignements](#12-synthèse-et-enseignements)
+11. [Limites et biais](#11-limites-et-biais)
+12. [Synthèse et enseignements](#12-synthèse-et-enseignements)
 
 ---
 
@@ -361,7 +365,160 @@ Deux pics extrêmes : **mai (9.35€)** et **décembre (9.78€)**. Le pic de ma
 
 ---
 
-## 9. Limites et biais
+## 9. Résultats contre-intuitifs
+
+### 9.1 Leclerc n'est pas toujours le moins cher
+
+| Ville | Comparaison | Produits communs | Leclerc battu sur |
+|---|---|---|---|
+| Nancy | Auchan vs Leclerc | 139 | **37 produits** (26.6%) |
+| Paris | Carrefour Market vs Leclerc | 34 | **8 produits** (23.5%) |
+
+Exemples où Leclerc est battu à Nancy : Wraper's poulet bacon (−15.6% chez Auchan), Olives Ail Ours (−17.6%), Steack Haché 15% (−4.4%).
+
+À Paris, Carrefour Market (pourtant un supermarché standard) bat Leclerc sur 8 produits, dont le riz basmati (−23%) et les crêpes chocolat (−26%).
+
+### 9.2 Carrefour Market étonnamment compétitif à Paris
+
+| Comparaison | Produits | Résultat |
+|---|---|---|
+| Carrefour Market vs Super U | 272 | CM moins cher sur **82%** des produits (−4.9% en moyenne) |
+| Carrefour Market vs Monoprix | 93 | CM moins cher sur **88%** des produits (−13.0% en moyenne) |
+
+Carrefour Market, positionné comme supermarché de quartier, bat Monoprix (enseigne "premium") dans 88% des cas à Paris avec un écart moyen de 13%. C'est l'inverse de ce que le positionnement marketing suggère.
+
+### 9.3 Même enseigne, prix ×1.7 à 3 km de distance
+
+À Nancy, le Leclerc intra-muros est systématiquement plus cher que le Leclerc de Vandœuvre-lès-Nancy (3 km) sur 238 produits communs :
+
+| Produit | Nancy | Vandœuvre | Écart |
+|---|---|---|---|
+| Chips Brets | 1.53€ | 0.90€ | **+70%** |
+| Lait de coco | 3.90€ | 2.53€ | +54% |
+| 4 pains pita | 2.36€ | 1.58€ | +49% |
+| Ebly L'Original | 2.04€ | 1.59€ | +28% |
+
+Aucun produit n'est moins cher à Nancy. Le « prix de la proximité urbaine » est massif : 3 km = 20-70% de surcoût.
+
+### 9.4 Nutri-Score A moins cher que E dans 25 catégories sur 43
+
+Dans les sous-catégories alimentaires où la comparaison est possible (≥5 produits de chaque côté) :
+
+| A moins cher que E (25 catégories) | E moins cher que A (18 catégories) |
+|---|---|
+| Biscuits secs (A: 2.09€ vs E: 8.14€) | Snacks pomme de terre (E: 0.91€ vs A: 2.35€) |
+| Légumes surgelés (A: 1.48€ vs E: 5.12€) | Galettes (E: 0.95€ vs A: 2.09€) |
+| Sauces cuisine (A: 1.70€ vs E: 3.83€) | Poulets (E: 2.66€ vs A: 4.78€) |
+| Pâtes à tartiner (A: 3.37€ vs E: 4.38€) | Beurre de cacahuète (E: 3.59€ vs A: 5.19€) |
+
+Le « health tax » (produit sain plus cher) n'existe que pour les snacks transformés. Pour les produits bruts (biscuits secs, légumes surgelés, sauces), le sain est moins cher.
+
+### 9.5 Le bio moins cher que le conventionnel — pas un mythe
+
+| Ville | Enseigne | Bio | Conventionnel | Écart |
+|---|---|---|---|---|
+| **Grenoble** | **Lidl** | **2.01€** | 3.44€ | **−42%** |
+| **Grenoble** | Intermarché | 3.64€ | 4.47€ | −19% |
+| **Grenoble** | Monoprix | 4.47€ | 4.90€ | −8.8% |
+| **Lyon** | Intermarché | 4.35€ | 5.61€ | −23% |
+| Paris | Intermarché | 4.50€ | 3.57€ | +26% |
+
+Le phénomène est réel mais localisé : dans les villes avec une forte concurrence bio (Grenoble, Lyon), le bio en GMS est moins cher que le conventionnel. À Paris, la prime bio persiste.
+
+### 9.6 MDD parfois plus chère que la marque nationale
+
+La MDD est en moyenne 41% moins chère que la marque nationale. Mais dans 20 cas, la MDD est **plus chère** :
+
+| Catégorie | Enseigne | Marque nationale | MDD | MDD + chère |
+|---|---|---|---|---|
+| Boissons | Super U | 2.71€ | 9.62€ | **+255%** |
+| Laits UHT | Auchan | 3.49€ | 11.83€ | **+239%** |
+| Tomates fraîches | Auchan | 1.45€ | 4.01€ | **+177%** |
+
+Explication : il s'agit de MDD premium/bio (ex: Carrefour Bio, Monoprix Gourmet) vs marques nationales premier prix.
+
+---
+
+## 10. Guide pratique : où faire ses courses
+
+### 10.1 Stratégie optimale : panier mixte multi-enseigne
+
+Simulation d'un panier de 5 catégories (fruits/légumes, produits laitiers, viandes, snacks, boissons) en France :
+
+| Catégorie | Meilleure enseigne | Prix optimal | Prix Leclerc | Économie |
+|---|---|---|---|---|
+| Fruits & légumes | Lidl | 2.20€ | 2.46€ | −11% |
+| Produits laitiers | Lidl | 2.58€ | 2.67€ | −3% |
+| Viandes | Aldi | 3.25€ | 4.33€ | −25% |
+| Snacks | Lidl | 2.30€ | 2.89€ | −20% |
+| Boissons | Lidl | 2.51€ | 4.13€ | **−39%** |
+| **Total** | **Multi-enseigne** | **12.84€** | **16.48€** | **−22%** |
+
+**En pratique, deux arrêts suffisent : Lidl (fruits, snacks, boissons, produits laitiers) + un hypermarché (viandes, poissons, plats préparés).** L'économie est de 22% par rapport à tout acheter chez Leclerc.
+
+### 10.2 Quel magasin pour quelle catégorie (Grenoble)
+
+| Catégorie | Meilleur hypermarché | Meilleur discount | Écart discount vs hyper |
+|---|---|---|---|
+| Fruits & légumes | Intermarché (2.78€) | Lidl (1.99€) | **−29%** |
+| Produits laitiers | Auchan (3.06€) | Lidl (2.18€) | **−29%** |
+| Snacks | Auchan (3.14€) | Lidl (2.59€) | −17% |
+| Boissons | Auchan (3.60€) | Aldi (3.11€) | −14% |
+| Petit-déjeuner | Auchan (4.39€) | Lidl (3.88€) | −12% |
+
+### 10.3 Pour le même budget, Lidl offre un meilleur Nutri-Score
+
+À Grenoble, avec ~2.60€ :
+
+| Enseigne | Nutri-Score obtenu |
+|---|---|
+| **Lidl** | **A** (1.97€) |
+| Auchan | C (2.68€) ou E (3.33€) |
+| Monoprix | E (5.06€) |
+
+Lidl A est 25% moins cher qu'Auchan A, et 49% moins cher que Monoprix A.
+
+### 10.4 Top 10 « bonnes affaires qualité » (Nutri-Score A/B, prix bas, populaires)
+
+| Produit | Marque | Nutri-Score | Prix | Où |
+|---|---|---|---|---|
+| 14 Maxi Tranches complet | Jacquet | A | 1.37€ | Leclerc Montélimar |
+| Galettes Authentique | Wasa | A | 1.45€ | Leclerc, Auchan, Intermarché |
+| Pomme Noisette | Gerblé | B | 1.54-1.72€ | Intermarché, Auchan |
+| Figue & Son | Gerblé | B | 1.44€ | Intermarché Ermont |
+| Pain de mie complet bio | La Boulangère Bio | A | 2.36€ | Multi-enseignes |
+| Skyr nature 0% | Yoplait | A | 3.48€ | Multi-enseignes |
+| Pur beurre de cacahuète | Jardin Bio | A | 4.27€ | Multi-enseignes |
+| Spécial Muesli 30% fruits | Jordans | B | 3.14-4.85€ | Auchan, Carrefour |
+| Emmental râpé | Eco+ | C | 1.06-1.62€ | Leclerc, Auchan |
+| Riz long | Eco+ | B | 0.69-1.22€ | Leclerc |
+
+### 10.5 Le bio en GMS est 30% moins cher qu'en magasin spécialisé
+
+À Paris, pour les mêmes produits bio :
+
+| Enseigne | Prix moyen bio | vs Leclerc |
+|---|---|---|
+| **E.Leclerc** | **3.53€** | — |
+| Biocoop | 4.08€ | +15% |
+| Monoprix | 4.67€ | +32% |
+| Naturalia | 5.08€ | +44% |
+
+Sur les snacks bio, l'écart explose : 2.34€ chez Leclerc vs 4.45€ chez Naturalia (+90%). En revanche, Biocoop est compétitif sur les boissons et produits fermiers (écart <10%).
+
+### 10.6 Où acheter les produits premium au meilleur prix
+
+| Produit | Enseigne | Ville la moins chère | Prix min | Prix max ailleurs |
+|---|---|---|---|---|
+| Lindt Excellence 70% | Auchan | **Belley (01)** | **1.45€** | 2.21€ (+52%) |
+| Maille Moutarde Dijon | Auchan | **Belley (01)** | **1.49€** | 2.36€ (+58%) |
+| Bonne Maman Pâte tartiner | Carrefour | Aubervilliers | 2.30€ | 3.79€ (+65%) |
+| Milka Oreo | Leclerc | Levallois-Perret | 2.96€ | 4.15€ (+40%) |
+| Panzani Tomacouli 500g | Leclerc | St-Magne-de-Castillon | 0.66€ | 0.96€ (+46%) |
+
+---
+
+## 11. Limites et biais
 
 ### Qualité des données
 
@@ -385,7 +542,7 @@ Deux pics extrêmes : **mai (9.35€)** et **décembre (9.78€)**. Le pic de ma
 
 ---
 
-## 10. Synthèse et enseignements
+## 12. Synthèse et enseignements
 
 ### Classement final des enseignes
 
