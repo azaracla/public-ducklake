@@ -39,6 +39,25 @@ L'utilisateur final n'a besoin que de DuckDB (un binaire, 0 dépendance) et d'un
 | `demographie` | Recensement individus 2020/2021, logements 2020/2021 | INSEE |
 | `entreprises` | Sirene (unités légales + établissements + historique), Annuaire des Entreprises, BEAAMP, Données financières | INSEE, data.gouv.fr, Signaux Faibles |
 | `education` | IPS écoles, Indice d'éloignement des lycées, IVAL lycées GT | Ministère de l'Éducation nationale |
+| `finances_publiques` | Comptes APU annuels 2019–2025, dette trimestrielle, encours OAT | Insee, Eurostat, AFT |
+
+## Enquête dette et taux
+
+Le site à la racine déroule six preuves sur la dette française. DuckDB-Wasm exécute les requêtes localement sur les Parquet versionnés.
+
+```bash
+# Retélécharger les sources, reconstruire les trois Parquet et valider les repères 2025
+uv run python scripts/build_finances_publiques.py
+
+# Contrôler les fichiers versionnés sans accès réseau
+uv run python scripts/build_finances_publiques.py --check
+
+# Tester les parseurs et construire le récit web
+uv run python -m unittest tests/test_finances_publiques.py
+npm ci && npm run build
+```
+
+La méthode et ses limites sont documentées dans [`references/dette-france-2025.md`](references/dette-france-2025.md). Le manifeste de chaque extraction est dans [`data/finances_publiques/v2026-08-01/sources.json`](data/finances_publiques/v2026-08-01/sources.json).
 
 ## Ce que ça permet
 

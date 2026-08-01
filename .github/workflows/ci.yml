@@ -8,6 +8,20 @@ on:
   workflow_dispatch:
 
 jobs:
+  validate-finances:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: uv sync --frozen
+      - run: uv run python -m unittest tests/test_finances_publiques.py
+      - run: uv run python scripts/build_finances_publiques.py --check
+      - run: npm ci && npm run build
+
   build-catalog:
     runs-on: ubuntu-latest
     steps:

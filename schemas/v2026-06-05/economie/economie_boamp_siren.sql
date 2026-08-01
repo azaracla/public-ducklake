@@ -196,13 +196,13 @@ COMMENT ON COLUMN economie.boamp_siren.SN_33_trancheEffectifsUniteLegale IS 'Tra
 COMMENT ON COLUMN economie.boamp_siren.activitePrincipaleNAF25UniteLegale IS 'Activité principale NAF25 de l''unité légale';
 
 CALL ducklake_add_data_files('dg', 'boamp_siren',
-    'https://static.data.gouv.fr/resources/jointure-boamp-siren-cote-acheteurs-2024-2025-et-2026/20260604-062858/boamp-avec-siren-acheteurs-2026.parquet',
+    'https://www.data.gouv.fr/api/1/datasets/r/98cfab64-85df-4612-a981-a22aff68d2f7',
     schema => 'economie');
 
 CALL ducklake_add_data_files('dg', 'boamp_siren',
-    'https://static.data.gouv.fr/resources/jointure-boamp-siren-cote-acheteurs-2024-2025-et-2026/20260514-070839/boamp-avec-siren-acheteurs-2025.parquet',
+    'https://www.data.gouv.fr/api/1/datasets/r/8b965b80-6ace-48c5-ac3d-7e2ab3c607a4',
     schema => 'economie');
 
 CALL ducklake_add_data_files('dg', 'boamp_siren',
-    'https://static.data.gouv.fr/resources/jointure-boamp-siren-cote-acheteurs-2024-2025-et-2026/20260514-070736/boamp-avec-siren-acheteurs-2024.parquet',
+    'https://www.data.gouv.fr/api/1/datasets/r/eab0fc6b-5c56-4849-9022-a53a48d7fd44',
     schema => 'economie');

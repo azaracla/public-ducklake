@@ -1,7 +1,7 @@
 -- Schema: entreprises
 -- Table: annuaire_etablissements
 -- Dataset: Données des entreprises utilisées dans l'Annuaire des Entreprises
--- Source: https://static.data.gouv.fr/resources/donnees-des-entreprises-utilisees-dans-lannuaire-des-entreprises/20260603-135630/etablissements-2026-06-03.parquet
+-- Source: https://www.data.gouv.fr/api/1/datasets/r/58427078-8afb-4651-9469-c9043991d892
 -- Last updated: 2026-06-03
 
 CREATE SCHEMA IF NOT EXISTS entreprises;
@@ -47,5 +47,5 @@ COMMENT ON COLUMN entreprises.annuaire_etablissements.liste_rge IS 'Liste des id
 COMMENT ON COLUMN entreprises.annuaire_etablissements.liste_uai IS 'Liste des identifiants UAI de l''établissement (source : Ministère de l''enseignement supérieur et de la recherche)';
 
 CALL ducklake_add_data_files('dg', 'annuaire_etablissements',
-    'https://static.data.gouv.fr/resources/donnees-des-entreprises-utilisees-dans-lannuaire-des-entreprises/20260603-135630/etablissements-2026-06-03.parquet',
+    'https://www.data.gouv.fr/api/1/datasets/r/58427078-8afb-4651-9469-c9043991d892',
     schema => 'entreprises');

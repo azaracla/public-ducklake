@@ -1,0 +1,80 @@
+-- Schema: economie
+-- Table: commande_publique
+-- Dataset: Données essentielles de la commande publique consolidées (format tabulaire)
+-- Source: https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-consolidees-format-tabulaire
+-- Last updated: 2026-08-01
+
+CREATE SCHEMA IF NOT EXISTS economie;
+
+CREATE TABLE economie.commande_publique (
+    uid VARCHAR,
+    id VARCHAR,
+    nature VARCHAR,
+    acheteur_id VARCHAR,
+    acheteur_nom VARCHAR,
+    titulaire_id VARCHAR,
+    titulaire_typeIdentifiant VARCHAR,
+    titulaire_nom VARCHAR,
+    objet VARCHAR,
+    montant DOUBLE,
+    type VARCHAR,
+    codeCPV VARCHAR,
+    procedure VARCHAR,
+    techniques VARCHAR,
+    dureeMois SMALLINT,
+    dureeRestanteMois DOUBLE,
+    offresRecues SMALLINT,
+    dateNotification DATE,
+    datePublicationDonnees DATE,
+    formePrix VARCHAR,
+    typesPrix VARCHAR,
+    attributionAvance BOOLEAN,
+    tauxAvance FLOAT,
+    marcheInnovant BOOLEAN,
+    modalitesExecution VARCHAR,
+    considerationsSociales VARCHAR,
+    considerationsEnvironnementales VARCHAR,
+    ccag VARCHAR,
+    sousTraitanceDeclaree BOOLEAN,
+    typeGroupementOperateurs VARCHAR,
+    origineUE FLOAT,
+    origineFrance FLOAT,
+    lieuExecution_code VARCHAR,
+    lieuExecution_typeCode VARCHAR,
+    idAccordCadre VARCHAR,
+    titulaire_distance SMALLINT,
+    acheteur_categorie VARCHAR,
+    acheteur_commune_code VARCHAR,
+    acheteur_commune_nom VARCHAR,
+    acheteur_departement_code VARCHAR,
+    acheteur_departement_nom VARCHAR,
+    acheteur_region_code VARCHAR,
+    acheteur_region_nom VARCHAR,
+    acheteur_latitude DOUBLE,
+    acheteur_longitude DOUBLE,
+    acheteur_population INTEGER,
+    titulaire_categorie VARCHAR,
+    titulaire_activite_code VARCHAR,
+    titulaire_activite_libelle VARCHAR,
+    titulaire_commune_code VARCHAR,
+    titulaire_commune_nom VARCHAR,
+    titulaire_departement_code VARCHAR,
+    titulaire_departement_nom VARCHAR,
+    titulaire_region_code VARCHAR,
+    titulaire_region_nom VARCHAR,
+    titulaire_latitude DOUBLE,
+    titulaire_longitude DOUBLE,
+    modification_id SMALLINT,
+    donneesActuelles BOOLEAN,
+    montant_rationalise DOUBLE,
+    montant_anomalie VARCHAR,
+    montant_anomalie_raisons VARCHAR,
+    sourceDataset VARCHAR,
+    sourceFile VARCHAR
+);
+
+COMMENT ON TABLE economie.commande_publique IS 'DECP consolidées, retraitées et publiées quotidiennement au format tabulaire par Colmo. Une ligne représente un titulaire et une version de marché ; uid identifie le marché et donneesActuelles sa dernière version. Source: data.gouv.fr dataset 6881ebd69e5b93c4d8f42295';
+
+CALL ducklake_add_data_files('dg', 'commande_publique',
+    'https://static.data.gouv.fr/resources/donnees-essentielles-de-la-commande-publique-consolidees-format-tabulaire/20260801-051534/decp.parquet',
+    schema => 'economie');

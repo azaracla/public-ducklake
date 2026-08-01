@@ -1,0 +1,77 @@
+{
+  "edition": "v2026-08-01",
+  "sources": [
+    {
+      "id": "insee_apu",
+      "url": "https://api.insee.fr/melodi/file/DD_CNA_APU/DD_CNA_APU_CSV_FR",
+      "retrieved_via": "https://api.insee.fr/melodi/file/DD_CNA_APU/DD_CNA_APU_CSV_FR",
+      "publication_date": "2026-07-07",
+      "retrieval_date": "2026-08-01",
+      "sha256": "72727dc0b0374df18972cc3e91f82b013da878eec23d13bdc92dae2b4300880b"
+    },
+    {
+      "id": "insee_annual",
+      "url": "https://www.insee.fr/fr/statistiques/fichier/8997691/ip2106.xlsx",
+      "retrieved_via": "https://www.insee.fr/fr/statistiques/fichier/8997691/ip2106.xlsx",
+      "publication_date": "2026-05-29",
+      "retrieval_date": "2026-08-01",
+      "sha256": "4a42854010a756c6900606ca3ccfe309bbdf4cec1e7a2b23091bbc04870abd86"
+    },
+    {
+      "id": "insee_gdp",
+      "url": "https://www.insee.fr/fr/statistiques/8988793",
+      "retrieved_via": "https://www.insee.fr/fr/statistiques/8988793",
+      "publication_date": "2026-05-29",
+      "retrieval_date": "2026-08-01",
+      "sha256": "eff8a94983f7683246e6f78361d0acb6af97fd600509ce3f74bd1a32ff6d312d"
+    },
+    {
+      "id": "insee_quarterly",
+      "url": "https://www.insee.fr/fr/statistiques/fichier/2830301/econ-gen-dette-trim-adm-pub-2.xlsx",
+      "retrieved_via": "https://www.insee.fr/fr/statistiques/fichier/2830301/econ-gen-dette-trim-adm-pub-2.xlsx",
+      "publication_date": "2026-07-30",
+      "retrieval_date": "2026-08-01",
+      "sha256": "fe87bc53d6a2daf15deae5a4aa8f44f7a9ff570457a8e7e3510882c71143d633"
+    },
+    {
+      "id": "eurostat_10y",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/irt_lt_mcby_m?geo=FR&sinceTimePeriod=2019-01&untilTimePeriod=2025-12",
+      "retrieved_via": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/irt_lt_mcby_m?geo=FR&sinceTimePeriod=2019-01&untilTimePeriod=2025-12",
+      "publication_date": "2026-01-01",
+      "retrieval_date": "2026-08-01",
+      "sha256": "c71f284b77d43fe8aeff2ed57bb68ec331ef3da635165b80d83438a3d7d7e244"
+    },
+    {
+      "id": "aft_oat",
+      "url": "https://www.aft.gouv.fr/fr/encours-detaille-oat",
+      "retrieved_via": "https://r.jina.ai/https://www.aft.gouv.fr/fr/encours-detaille-oat",
+      "publication_date": "2026-08-01",
+      "retrieval_date": "2026-08-01",
+      "sha256": "df6795d367474577b8e084f1285b5dfc7e2f5306f8f2fe3e5b7b43824e13b2ab"
+    },
+    {
+      "id": "aft_oati",
+      "url": "https://www.aft.gouv.fr/fr/encours-detaille-oati",
+      "retrieved_via": "https://r.jina.ai/https://www.aft.gouv.fr/fr/encours-detaille-oati",
+      "publication_date": "2026-08-01",
+      "retrieval_date": "2026-08-01",
+      "sha256": "9bdfe6700e0fb31f791390841fee845aafe8173d51ab2b54193dbf7f85adb293"
+    },
+    {
+      "id": "aft_oatei",
+      "url": "https://www.aft.gouv.fr/fr/encours-detaille-oatei",
+      "retrieved_via": "https://r.jina.ai/https://www.aft.gouv.fr/fr/encours-detaille-oatei",
+      "publication_date": "2026-08-01",
+      "retrieval_date": "2026-08-01",
+      "sha256": "3f2c29820bf3825e2bd4f9ad98d937085d175ad325c6ae6232e7404698273cb9"
+    },
+    {
+      "id": "aft_report",
+      "url": "https://www.aft.gouv.fr/fr/publications/communiques-presse/07072026-lagence-france-tresor-publie-son-rapport-dactivite-2025",
+      "retrieved_via": "https://r.jina.ai/https://www.aft.gouv.fr/fr/publications/communiques-presse/07072026-lagence-france-tresor-publie-son-rapport-dactivite-2025",
+      "publication_date": "2026-07-07",
+      "retrieval_date": "2026-08-01",
+      "sha256": "173ff2ce56989fab1941058cddb75a8b65b603c0f5512ec9dc9c4012f882f47a"
+    }
+  ]
+}

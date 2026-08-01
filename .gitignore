@@ -4,6 +4,9 @@
 # Large Parquet files (not in catalog)
 *.parquet
 parquet/
+!data/
+!data/finances_publiques/
+!data/finances_publiques/**/*.parquet
 
 # DuckLake local metadata
 dg_lake/
@@ -11,3 +14,7 @@ dg_lake/
 # Python
 __pycache__/
 .venv/
+
+# Frontend
+node_modules/
+dist/
