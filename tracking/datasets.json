@@ -26,8 +26,8 @@
     "last_update": "2026-06-02",
     "schema_version": "v2026-06-03",
     "parquet_urls": {
-      "annuaire_etablissements": "https://static.data.gouv.fr/resources/donnees-des-entreprises-utilisees-dans-lannuaire-des-entreprises/20260602-161010/etablissements-2026-06-02.parquet",
-      "annuaire_unites_legales": "https://static.data.gouv.fr/resources/donnees-des-entreprises-utilisees-dans-lannuaire-des-entreprises/20260602-160727/unites-legales-2026-06-02.parquet"
+      "annuaire_etablissements": "https://www.data.gouv.fr/api/1/datasets/r/58427078-8afb-4651-9469-c9043991d892",
+      "annuaire_unites_legales": "https://www.data.gouv.fr/api/1/datasets/r/77f09ee6-8ccb-4eb8-ad10-382be6416065"
     },
     "source_url": "https://www.data.gouv.fr/datasets/donnees-des-entreprises-utilisees-dans-lannuaire-des-entreprises/",
     "organization": "data.gouv.fr",
@@ -75,10 +75,10 @@
     "last_update": "2026-06-01",
     "schema_version": "v2026-06-03",
     "parquet_urls": {
-      "sirene_etablissements": "https://static.data.gouv.fr/resources/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/20260601-092940/stock-stocketablissement-parquet.parquet",
-      "sirene_etablissements_historique": "https://static.data.gouv.fr/resources/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/20260601-092749/stock-stocketablissementhistorique-parquet.parquet",
-      "sirene_unites_legales": "https://static.data.gouv.fr/resources/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/20260601-092310/stock-stockunitelegale-parquet.parquet",
-      "sirene_unites_legales_historique": "https://static.data.gouv.fr/resources/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/20260601-092423/stock-stockunitelegalehistorique-parquet.parquet"
+      "sirene_etablissements": "https://www.data.gouv.fr/api/1/datasets/r/a29c1297-1f92-4e2a-8f6b-8c902ce96c5f",
+      "sirene_etablissements_historique": "https://www.data.gouv.fr/api/1/datasets/r/2b3a0c79-f97b-46b8-ac02-8be6c1f01a8c",
+      "sirene_unites_legales": "https://www.data.gouv.fr/api/1/datasets/r/350182c9-148a-46e0-8389-76c2ec1374a3",
+      "sirene_unites_legales_historique": "https://www.data.gouv.fr/api/1/datasets/r/1b9290ed-d0bc-461f-ba31-0250a99cc140"
     },
     "source_url": "https://www.data.gouv.fr/datasets/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/",
     "organization": "Institut national de la statistique et des études économiques (Insee)",
@@ -161,19 +161,19 @@
     "organization": "data.gouv.fr",
     "license": "lov2"
   },
-  "donnees-essentielles-de-la-commande-publique-fichiers-consolides": {
-    "name": "Données essentielles de la commande publique - fichiers consolidés",
+  "donnees-essentielles-de-la-commande-publique-consolidees-format-tabulaire": {
+    "name": "Données essentielles de la commande publique consolidées (format tabulaire)",
     "category": "economie",
     "tables": [
       "economie.commande_publique"
     ],
-    "last_update": "2026-06-05",
-    "schema_version": "v2026-06-05",
+    "last_update": "2026-08-01",
+    "schema_version": "v2026-08-01",
     "parquet_urls": {
-      "commande_publique": "https://static.data.gouv.fr/resources/donnees-essentielles-de-la-commande-publique-fichiers-consolides/20260605-091141/decp-global.parquet"
+      "commande_publique": "https://static.data.gouv.fr/resources/donnees-essentielles-de-la-commande-publique-consolidees-format-tabulaire/20260801-051534/decp.parquet"
     },
-    "source_url": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides/",
-    "organization": "État français / data.gouv.fr",
+    "source_url": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-consolidees-format-tabulaire/",
+    "organization": "Colmo",
     "license": "lov2"
   },
   "revenus-pauvrete-et-niveau-de-vie-donnees-carroyees-2019-et-2021-dispositif-fichier-localise-social-et-fiscal-filosofi": {
@@ -216,9 +216,9 @@
     "last_update": "2026-06-04",
     "schema_version": "v2026-06-05",
     "parquet_urls": {
-      "boamp_siren_2026": "https://static.data.gouv.fr/resources/jointure-boamp-siren-cote-acheteurs-2024-2025-et-2026/20260604-062858/boamp-avec-siren-acheteurs-2026.parquet",
-      "boamp_siren_2025": "https://static.data.gouv.fr/resources/jointure-boamp-siren-cote-acheteurs-2024-2025-et-2026/20260514-070839/boamp-avec-siren-acheteurs-2025.parquet",
-      "boamp_siren_2024": "https://static.data.gouv.fr/resources/jointure-boamp-siren-cote-acheteurs-2024-2025-et-2026/20260514-070736/boamp-avec-siren-acheteurs-2024.parquet"
+      "boamp_siren_2026": "https://www.data.gouv.fr/api/1/datasets/r/98cfab64-85df-4612-a981-a22aff68d2f7",
+      "boamp_siren_2025": "https://www.data.gouv.fr/api/1/datasets/r/8b965b80-6ace-48c5-ac3d-7e2ab3c607a4",
+      "boamp_siren_2024": "https://www.data.gouv.fr/api/1/datasets/r/eab0fc6b-5c56-4849-9022-a53a48d7fd44"
     },
     "source_url": "https://www.data.gouv.fr/datasets/jointure-boamp-siren-cote-acheteurs-2024-2025-et-2026/",
     "organization": "AuFilDuBoamp.com",
@@ -255,5 +255,25 @@
     "organization": "Open Food Facts",
     "license": "odc-odbl",
     "notes": "Export Parquet hébergé sur HuggingFace. 262K preuves de prix, 27 MB."
+  },
+  "dette-et-taux-francais-2025": {
+    "name": "Dette et taux français — édition reproductible 2025",
+    "category": "finances_publiques",
+    "tables": [
+      "finances_publiques.apu_annuel",
+      "finances_publiques.dette_trimestrielle",
+      "finances_publiques.oat"
+    ],
+    "last_update": "2026-08-01",
+    "schema_version": "v2026-08-01",
+    "parquet_urls": {
+      "apu_annuel": "https://raw.githubusercontent.com/azaracla/public-ducklake/main/data/finances_publiques/v2026-08-01/apu_annuel.parquet",
+      "dette_trimestrielle": "https://raw.githubusercontent.com/azaracla/public-ducklake/main/data/finances_publiques/v2026-08-01/dette_trimestrielle.parquet",
+      "oat": "https://raw.githubusercontent.com/azaracla/public-ducklake/main/data/finances_publiques/v2026-08-01/oat.parquet"
+    },
+    "source_url": "https://www.data.gouv.fr/datasets/comptes-des-administrations-publiques",
+    "organization": "Insee, Eurostat, Agence France Trésor",
+    "license": "lov2",
+    "notes": "Sources, dates de publication, dates de récupération et SHA-256 dans data/finances_publiques/v2026-08-01/sources.json."
   }
 }

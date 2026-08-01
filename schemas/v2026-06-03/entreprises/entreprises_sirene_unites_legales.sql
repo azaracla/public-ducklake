@@ -1,7 +1,7 @@
 -- Schema: entreprises
 -- Table: sirene_unites_legales
 -- Dataset: Base Sirene des entreprises et de leurs établissements (SIREN, SIRET)
--- Source: https://static.data.gouv.fr/resources/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/20260601-092310/stock-stockunitelegale-parquet.parquet
+-- Source: https://www.data.gouv.fr/api/1/datasets/r/350182c9-148a-46e0-8389-76c2ec1374a3
 -- Last updated: 2026-06-03
 
 CREATE SCHEMA IF NOT EXISTS entreprises;
@@ -81,5 +81,5 @@ CREATE TABLE entreprises.sirene_unites_legales (
 COMMENT ON TABLE entreprises.sirene_unites_legales IS 'Unités légales (Base Sirene - INSEE)';
 
 CALL ducklake_add_data_files('dg', 'sirene_unites_legales',
-    'https://static.data.gouv.fr/resources/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/20260601-092310/stock-stockunitelegale-parquet.parquet',
+    'https://www.data.gouv.fr/api/1/datasets/r/350182c9-148a-46e0-8389-76c2ec1374a3',
     schema => 'entreprises');

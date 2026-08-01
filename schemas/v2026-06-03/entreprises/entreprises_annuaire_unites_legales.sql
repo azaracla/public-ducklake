@@ -1,7 +1,7 @@
 -- Schema: entreprises
 -- Table: annuaire_unites_legales
 -- Dataset: Données des entreprises utilisées dans l'Annuaire des Entreprises
--- Source: https://static.data.gouv.fr/resources/donnees-des-entreprises-utilisees-dans-lannuaire-des-entreprises/20260603-135323/unites-legales-2026-06-03.parquet
+-- Source: https://www.data.gouv.fr/api/1/datasets/r/77f09ee6-8ccb-4eb8-ad10-382be6416065
 -- Last updated: 2026-06-03
 
 CREATE SCHEMA IF NOT EXISTS entreprises;
@@ -110,5 +110,5 @@ COMMENT ON COLUMN entreprises.annuaire_unites_legales.est_siae IS 'Structure d''
 COMMENT ON COLUMN entreprises.annuaire_unites_legales.type_siae IS 'Type de structure de l''inclusion (source : Marché de l''Inclusion)';
 
 CALL ducklake_add_data_files('dg', 'annuaire_unites_legales',
-    'https://static.data.gouv.fr/resources/donnees-des-entreprises-utilisees-dans-lannuaire-des-entreprises/20260603-135323/unites-legales-2026-06-03.parquet',
+    'https://www.data.gouv.fr/api/1/datasets/r/77f09ee6-8ccb-4eb8-ad10-382be6416065',
     schema => 'entreprises');

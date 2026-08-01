@@ -17,6 +17,7 @@ CREATE SCHEMA IF NOT EXISTS education;
 CREATE SCHEMA IF NOT EXISTS foncier;
 CREATE SCHEMA IF NOT EXISTS economie;
 CREATE SCHEMA IF NOT EXISTS alimentation;
+CREATE SCHEMA IF NOT EXISTS finances_publiques;
 
 .read schemas/v2026-06-03/demographie/demographie_recensement_individus_2020.sql
 .read schemas/v2026-06-03/demographie/demographie_recensement_individus_2021.sql
@@ -34,9 +35,12 @@ CREATE SCHEMA IF NOT EXISTS alimentation;
 .read schemas/v2026-06-03/entreprises/entreprises_sirene_unites_legales.sql
 .read schemas/v2026-06-03/entreprises/entreprises_sirene_unites_legales_historique.sql
 .read schemas/v2026-06-03/foncier/foncier_dvf.sql
-.read schemas/v2026-06-05/economie/economie_commande_publique.sql
+.read schemas/v2026-08-01/economie/economie_commande_publique.sql
 .read schemas/v2026-06-05/economie/economie_filosofi_carroye.sql
 .read schemas/v2026-06-05/economie/economie_insee_olap.sql
 .read schemas/v2026-06-05/economie/economie_boamp_siren.sql
 .read schemas/v2026-06-05/alimentation/alimentation_open_prices.sql
 .read schemas/v2026-06-05/alimentation/alimentation_open_food_facts.sql
+.read schemas/v2026-08-01/finances_publiques/finances_publiques_apu_annuel.sql
+.read schemas/v2026-08-01/finances_publiques/finances_publiques_dette_trimestrielle.sql
+.read schemas/v2026-08-01/finances_publiques/finances_publiques_oat.sql

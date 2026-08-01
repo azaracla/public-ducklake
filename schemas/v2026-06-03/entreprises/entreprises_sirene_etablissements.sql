@@ -1,7 +1,7 @@
 -- Schema: entreprises
 -- Table: sirene_etablissements
 -- Dataset: Base Sirene des entreprises et de leurs établissements (SIREN, SIRET)
--- Source: https://static.data.gouv.fr/resources/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/20260601-092940/stock-stocketablissement-parquet.parquet
+-- Source: https://www.data.gouv.fr/api/1/datasets/r/a29c1297-1f92-4e2a-8f6b-8c902ce96c5f
 -- Last updated: 2026-06-03
 
 CREATE SCHEMA IF NOT EXISTS entreprises;
@@ -119,5 +119,5 @@ CREATE TABLE entreprises.sirene_etablissements (
 COMMENT ON TABLE entreprises.sirene_etablissements IS 'Établissements des entreprises (Base Sirene - INSEE)';
 
 CALL ducklake_add_data_files('dg', 'sirene_etablissements',
-    'https://static.data.gouv.fr/resources/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/20260601-092940/stock-stocketablissement-parquet.parquet',
+    'https://www.data.gouv.fr/api/1/datasets/r/a29c1297-1f92-4e2a-8f6b-8c902ce96c5f',
     schema => 'entreprises');
